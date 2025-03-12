@@ -1,5 +1,12 @@
 .dishCard {
   background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dishInfo {
+  flex-grow: 0;
 }
 
 .dishName {
@@ -11,4 +18,21 @@
 .dishIngredients {
   margin-bottom: 5px;
   color: #666;
+}
+
+.dishControls {
+  display: flex;
+  align-items: center;
+}
+
+.dishControls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+
+.dishControls span {
+  margin: 0 5px;
+  display: inline-block;
+  width: 15px;
+  text-align: center;
 }
