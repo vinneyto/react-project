@@ -1,14 +1,10 @@
 import React from 'react';
 import { DishCard } from '../DishCard';
 import styles from './RestaurantMenu.module.css';
+import { MenuItem } from '../../mock';
 
 interface RestaurantMenuProps {
-  menu: Array<{
-    id: string;
-    name: string;
-    price: number;
-    ingredients: string[];
-  }>;
+  menu: MenuItem[];
 }
 
 export const RestaurantMenu: React.FC<RestaurantMenuProps> = ({ menu }) => {

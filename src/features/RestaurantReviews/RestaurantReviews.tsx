@@ -1,9 +1,10 @@
 import React from 'react';
 import { ReviewCard } from '../ReviewCard';
 import styles from './RestaurantReviews.module.css';
+import { Review } from '../../mock';
 
 interface RestaurantReviewsProps {
-  reviews: { id: string; user: string; text: string; rating: number }[];
+  reviews: Review[];
 }
 
 export const RestaurantReviews: React.FC<RestaurantReviewsProps> = ({

@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import { Card } from '../../components';
 import styles from './DishCard.module.css';
 import { DishCounter } from '../DishCounter';
+import { MenuItem } from '../../mock';
 
 interface DishCardProps {
-  dish: {
-    id: string;
-    name: string;
-    price: number;
-    ingredients: string[];
-  };
+  dish: MenuItem;
 }
 
 export const DishCard: React.FC<DishCardProps> = ({ dish }) => {

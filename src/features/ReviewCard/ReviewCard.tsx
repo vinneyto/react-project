@@ -1,14 +1,10 @@
 import React from 'react';
 import { Card } from '../../components/Card';
 import styles from './ReviewCard.module.css';
+import { Review } from '../../mock';
 
 interface ReviewCardProps {
-  review: {
-    id: string;
-    text: string;
-    user: string;
-    rating: number;
-  };
+  review: Review;
 }
 
 const getRatingColor = (rating: number) => {

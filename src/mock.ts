@@ -1,8 +1,22 @@
+export interface MenuItem {
+  id: string;
+  price: number;
+  name: string;
+  ingredients: string[];
+}
+
+export interface Review {
+  id: string;
+  user: string;
+  text: string;
+  rating: number;
+}
+
 export interface Restaurant {
   id: string;
   name: string;
-  menu: { id: string; price: number; name: string; ingredients: string[] }[];
-  reviews: { id: string; user: string; text: string; rating: number }[];
+  menu: MenuItem[];
+  reviews: Review[];
 }
 
 export const restaurants: Restaurant[] = [
