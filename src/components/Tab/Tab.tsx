@@ -1,6 +1,7 @@
-import React from 'react';
-import styles from './Tab.module.css';
 import classnames from 'classnames';
+import React from 'react';
+
+import styles from './Tab.module.css';
 
 interface TabProps {
   label: string;

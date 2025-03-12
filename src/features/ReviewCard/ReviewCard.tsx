@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { Card } from '../../components/Card';
-import styles from './ReviewCard.module.css';
-import { Review } from '../../mock';
 import { getRatingClass } from '../../helpers';
+import { Review } from '../../types';
+import styles from './ReviewCard.module.css';
 
 interface ReviewCardProps {
   review: Review;

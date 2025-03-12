@@ -1,6 +1,7 @@
 import React from 'react';
-import { Restaurant } from '../../mock';
+
 import { Card } from '../../components';
+import { Restaurant } from '../../mock';
 import { RestaurantMenu } from '../RestaurantMenu';
 import { RestaurantReviews } from '../RestaurantReviews';
 import styles from './RestaurantCard.module.css';

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+
 import { Card } from '../../components';
-import styles from './DishCard.module.css';
+import { MenuItem } from '../../types';
 import { DishCounter } from '../DishCounter';
-import { MenuItem } from '../../mock';
+import styles from './DishCard.module.css';
 
 interface DishCardProps {
   dish: MenuItem;
