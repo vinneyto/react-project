@@ -1,9 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import styles from './Card.module.css';
 
-interface CardProps {
-  children: ReactNode;
+interface CardProps extends PropsWithChildren {
   className?: string;
 }
 

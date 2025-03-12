@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card } from '../../components/Card';
+import { Card, Button } from '../../components';
 import styles from './DishCard.module.css';
 
 interface DishCardProps {
@@ -32,13 +32,13 @@ export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
         </div>
       </div>
       <div className={styles.dishControls}>
-        <button onClick={decrement} disabled={quantity === 0}>
+        <Button onClick={decrement} disabled={quantity === 0}>
           -
-        </button>
+        </Button>
         <span>{quantity}</span>
-        <button onClick={increment} disabled={quantity === 5}>
+        <Button onClick={increment} disabled={quantity === 5}>
           +
-        </button>
+        </Button>
       </div>
     </Card>
   );

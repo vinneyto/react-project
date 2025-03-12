@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Tab.module.css';
+import classnames from 'classnames';
 
 interface TabProps {
   label: string;
@@ -10,7 +11,7 @@ interface TabProps {
 export const Tab: React.FC<TabProps> = ({ label, isActive, onClick }) => {
   return (
     <div
-      className={`${styles.tab} ${isActive ? styles.active : ''}`}
+      className={classnames(styles.tab, { [styles.active]: isActive })}
       onClick={onClick}
     >
       {label}
