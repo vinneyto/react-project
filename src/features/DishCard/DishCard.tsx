@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Card, Button } from '../../components';
+import { Card } from '../../components';
 import styles from './DishCard.module.css';
+import { DishCounter } from '../DishCounter';
 
 interface DishCardProps {
   dish: {
@@ -14,12 +15,8 @@ interface DishCardProps {
 export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
   const [quantity, setQuantity] = useState(0);
 
-  const increment = () => {
-    if (quantity < 5) setQuantity(quantity + 1);
-  };
-
-  const decrement = () => {
-    if (quantity > 0) setQuantity(quantity - 1);
+  const handleQuantityChange = (newQuantity: number) => {
+    setQuantity(newQuantity);
   };
 
   return (
@@ -31,15 +28,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
           Ingredients: {dish.ingredients.join(', ')}
         </div>
       </div>
-      <div className={styles.dishControls}>
-        <Button onClick={decrement} disabled={quantity === 0}>
-          -
-        </Button>
-        <span>{quantity}</span>
-        <Button onClick={increment} disabled={quantity === 5}>
-          +
-        </Button>
-      </div>
+      <DishCounter value={quantity} onChange={handleQuantityChange} />
     </Card>
   );
 };
