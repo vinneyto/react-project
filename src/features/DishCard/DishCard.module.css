@@ -1,0 +1,14 @@
+.dishCard {
+  background-color: white;
+}
+
+.dishName {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.dishPrice,
+.dishIngredients {
+  margin-bottom: 5px;
+  color: #666;
+}
