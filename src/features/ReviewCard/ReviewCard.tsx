@@ -2,18 +2,11 @@ import React from 'react';
 import { Card } from '../../components/Card';
 import styles from './ReviewCard.module.css';
 import { Review } from '../../mock';
+import { getRatingClass } from '../../helpers';
 
 interface ReviewCardProps {
   review: Review;
 }
-
-const getRatingColor = (rating: number) => {
-  if (rating >= 4) {
-    return styles.ratingTextHigh;
-  } else {
-    return styles.ratingTextLow;
-  }
-};
 
 export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
   return (
@@ -21,7 +14,11 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
       <div className={styles.reviewText}>{review.text}</div>
       <div className={styles.reviewUser}>User: {review.user}</div>
       <div
-        className={`${styles.reviewRating} ${getRatingColor(review.rating)}`}
+        className={`${styles.reviewRating} ${getRatingClass(
+          review.rating,
+          styles.ratingTextHigh,
+          styles.ratingTextLow
+        )}`}
       >
         Rating: {review.rating}
       </div>
