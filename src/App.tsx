@@ -1,6 +1,10 @@
-import { RestaurantList } from './components';
-import { restaurants } from './mock';
+import { RestaurantPage } from './pages';
+import styles from './App.module.css';
 
 export function App() {
-  return <RestaurantList restaurants={restaurants} />;
+  return (
+    <div className={styles.appContainer}>
+      <RestaurantPage />
+    </div>
+  );
 }

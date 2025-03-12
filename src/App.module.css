@@ -1,0 +1,12 @@
+.appContainer {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.appContainer > * {
+  max-width: 1000px;
+  width: 100%;
+}
