@@ -1,4 +1,5 @@
 export * from './RestaurantCard';
+export * from './RestaurantMenu';
 export * from './DishCard';
 export * from './ReviewCard';
 export * from './Header';
