@@ -1,10 +1,10 @@
 import { RestaurantPage } from './pages';
-import styles from './App.module.css';
+import { Layout } from './features/Layout';
 
 export function App() {
   return (
-    <div className={styles.appContainer}>
+    <Layout>
       <RestaurantPage />
-    </div>
+    </Layout>
   );
 }
