@@ -6,7 +6,8 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.content}>
         <p>
-          © {new Date().getFullYear()} Restaurant Name. All rights reserved.
+          © {new Date().getFullYear()} Restaurant Aggregator. All rights
+          reserved.
         </p>
         <p>1234 Restaurant St, Food City, FC 56789</p>
         <p>Contact us: (123) 456-7890</p>

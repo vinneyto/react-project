@@ -5,7 +5,7 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.content}>
-        <h1>Restaurant Name</h1>
+        <h1>Restaurant Aggregator</h1>
         <nav>
           <ul className={styles.navList}>
             <li>
