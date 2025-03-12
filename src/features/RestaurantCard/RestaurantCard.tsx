@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Card } from '../../components';
-import { Restaurant } from '../../mock';
+import { Restaurant } from '../../types';
 import { RestaurantMenu } from '../RestaurantMenu';
 import { RestaurantReviews } from '../RestaurantReviews';
 import styles from './RestaurantCard.module.css';
