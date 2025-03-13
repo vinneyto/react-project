@@ -1,0 +1,11 @@
+.menuTitle {
+  color: #555;
+  font-size: 20px;
+  margin-top: 15px;
+  padding-bottom: 5px;
+}
+
+.menuList {
+  list-style-type: none;
+  padding: 0;
+}

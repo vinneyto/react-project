@@ -1,6 +1,10 @@
-import { RestaurantList } from './components';
-import { restaurants } from './mock';
+import { Layout } from './features/Layout';
+import { RestaurantPage } from './pages';
 
 export function App() {
-  return <RestaurantList restaurants={restaurants} />;
+  return (
+    <Layout>
+      <RestaurantPage />
+    </Layout>
+  );
 }

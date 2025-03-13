@@ -1,0 +1,15 @@
+.tabPanel {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.tabPanel::-webkit-scrollbar {
+  display: none;
+}
+
+.tabPanel > * {
+  height: 100%;
+}

@@ -1,9 +1,4 @@
-export interface Restaurant {
-  id: string;
-  name: string;
-  menu: { id: string; price: number; name: string; ingredients: string[] }[];
-  reviews: { id: string; user: string; text: string; rating: number }[];
-}
+import { Restaurant } from './types';
 
 export const restaurants: Restaurant[] = [
   {
