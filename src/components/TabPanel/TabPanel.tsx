@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import styles from './TabPanel.module.css';
 
-interface TabPanelProps {
+interface TabPanelProps extends PropsWithChildren {
   height?: string;
-  children: React.ReactNode;
 }
 
 export const TabPanel: React.FC<TabPanelProps> = ({

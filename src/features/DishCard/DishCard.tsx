@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Card } from '../../components';
 import { MenuItem } from '../../types';
@@ -10,12 +10,6 @@ interface DishCardProps {
 }
 
 export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
-  const [quantity, setQuantity] = useState(0);
-
-  const handleQuantityChange = (newQuantity: number) => {
-    setQuantity(newQuantity);
-  };
-
   return (
     <Card className={styles.dishCard}>
       <div className={styles.dishInfo}>
@@ -25,7 +19,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
           Ingredients: {dish.ingredients.join(', ')}
         </div>
       </div>
-      <DishCounter value={quantity} onChange={handleQuantityChange} />
+      <DishCounter />
     </Card>
   );
 };

@@ -39,7 +39,8 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true }
       ],
-      'react/prop-types': 0
+      'react/prop-types': 0,
+      curly: ['error', 'all']
     }
   }
 );

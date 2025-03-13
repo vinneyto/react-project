@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Button } from '../../components';
 import styles from './DishCounter.module.css';
 
-interface DishCountProps {
-  value: number;
-  onChange: (value: number) => void;
-}
+export const DishCounter: React.FC = () => {
+  const [quantity, setQuantity] = useState(0);
 
-export const DishCounter: React.FC<DishCountProps> = ({ value, onChange }) => {
   const increment = () => {
-    if (value < 5) onChange(value + 1);
+    if (quantity < 5) {
+      setQuantity(quantity + 1);
+    }
   };
 
   const decrement = () => {
-    if (value > 0) onChange(value - 1);
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
   };
 
   return (
     <div className={styles.dishControls}>
-      <Button onClick={decrement} disabled={value === 0}>
+      <Button onClick={decrement} disabled={quantity === 0}>
         -
       </Button>
-      <span>{value}</span>
-      <Button onClick={increment} disabled={value === 5}>
+      <span>{quantity}</span>
+      <Button onClick={increment} disabled={quantity === 5}>
         +
       </Button>
     </div>
