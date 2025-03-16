@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '../../components';
+import { Button } from '..';
 import styles from './Counter.module.css';
 
 interface CounterProps {

@@ -7,4 +7,4 @@ export * from './Header';
 export * from './Footer';
 export * from './Layout';
 export * from './DishCounter';
-export * from './Counter';
+export * from '../components/Counter';

@@ -1,7 +1,7 @@
 import React from 'react';
 
+import { Counter } from '../../components';
 import { useCounter } from '../../hooks';
-import { Counter } from '../Counter';
 
 const MIN_QUANTITY = 0;
 const MAX_QUANTITY = 5;
