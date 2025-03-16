@@ -3,7 +3,6 @@ import React from 'react';
 import { Button } from '../../components/Button';
 import { Counter } from '../../components/Counter';
 import { Input } from '../../components/Input';
-// Import the hook
 import styles from './ReviewForm.module.css';
 import { useReviewFormReducer } from './useReviewFormReducer';
 
