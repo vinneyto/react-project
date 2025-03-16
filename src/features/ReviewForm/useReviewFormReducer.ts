@@ -6,10 +6,13 @@ interface ReviewFormState {
   rating: number;
 }
 
+export const MIN_RATING = 1;
+export const MAX_RATING = 5;
+
 const initialState: ReviewFormState = {
   name: '',
   text: '',
-  rating: 1
+  rating: MIN_RATING
 };
 
 type Action =
@@ -29,9 +32,9 @@ const reducer = (state: ReviewFormState, action: Action): ReviewFormState => {
     case 'SET_RATING':
       return { ...state, rating: action.payload };
     case 'INCREMENT_RATING':
-      return { ...state, rating: Math.min(state.rating + 1, 5) };
+      return { ...state, rating: Math.min(state.rating + 1, MAX_RATING) };
     case 'DECREMENT_RATING':
-      return { ...state, rating: Math.max(state.rating - 1, 1) };
+      return { ...state, rating: Math.max(state.rating - 1, MIN_RATING) };
     case 'CLEAR':
       return initialState;
     default:

@@ -4,10 +4,11 @@ import { Button } from '../../components/Button';
 import { Counter } from '../../components/Counter';
 import { Input } from '../../components/Input';
 import styles from './ReviewForm.module.css';
-import { useReviewFormReducer } from './useReviewFormReducer';
-
-const MIN_RATING = 1;
-const MAX_RATING = 5;
+import {
+  MAX_RATING,
+  MIN_RATING,
+  useReviewFormReducer
+} from './useReviewFormReducer';
 
 export const ReviewForm: React.FC = () => {
   const {
