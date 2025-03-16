@@ -1,32 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Button } from '../../components';
-import styles from './DishCounter.module.css';
+import { useCounter } from '../../hooks';
+import { Counter } from '../Counter';
+
+const MIN_QUANTITY = 0;
+const MAX_QUANTITY = 5;
 
 export const DishCounter: React.FC = () => {
-  const [quantity, setQuantity] = useState(0);
-
-  const increment = () => {
-    if (quantity < 5) {
-      setQuantity(quantity + 1);
-    }
-  };
-
-  const decrement = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
-  };
+  const { quantity, increment, decrement } = useCounter(0);
 
   return (
-    <div className={styles.dishControls}>
-      <Button onClick={decrement} disabled={quantity === 0}>
-        -
-      </Button>
-      <span>{quantity}</span>
-      <Button onClick={increment} disabled={quantity === 5}>
-        +
-      </Button>
-    </div>
+    <Counter
+      quantity={quantity}
+      increment={increment}
+      decrement={decrement}
+      min={MIN_QUANTITY}
+      max={MAX_QUANTITY}
+    />
   );
 };

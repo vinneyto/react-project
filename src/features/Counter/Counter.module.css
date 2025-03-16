@@ -1,0 +1,37 @@
+.counterControls {
+  display: flex;
+  align-items: center;
+}
+
+.counterControls span {
+  margin: 0 5px;
+  display: inline-block;
+  width: 15px;
+  text-align: center;
+}
+
+.counterControls button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.counterControls button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.counterControls button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
