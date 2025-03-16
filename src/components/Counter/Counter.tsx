@@ -36,6 +36,7 @@ export const Counter: React.FC<CounterProps> = ({
         onClick={handleDecrement}
         disabled={quantity === min}
         type="button"
+        size="sm"
       >
         -
       </Button>
@@ -44,6 +45,7 @@ export const Counter: React.FC<CounterProps> = ({
         onClick={handleIncrement}
         disabled={quantity === max}
         type="button"
+        size="sm"
       >
         +
       </Button>

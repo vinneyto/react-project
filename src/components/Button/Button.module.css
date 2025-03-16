@@ -1,5 +1,4 @@
 .button {
-  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -8,6 +7,18 @@
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 3px;
+}
+
+.sm {
+  padding: 5px 10px;
+}
+
+.nm {
+  padding: 10px 20px;
+}
+
+.lg {
+  padding: 15px 30px;
 }
 
 .primary {
