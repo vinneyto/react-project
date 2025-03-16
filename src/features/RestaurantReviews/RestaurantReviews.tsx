@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Review } from '../../types';
 import { ReviewCard } from '../ReviewCard';
+import { ReviewForm } from '../ReviewForm';
 import styles from './RestaurantReviews.module.css';
 
 interface RestaurantReviewsProps {
@@ -21,6 +22,8 @@ export const RestaurantReviews: React.FC<RestaurantReviewsProps> = ({
           </li>
         ))}
       </ul>
+      <h3 className={styles.reviewFormTitle}>Add a Review</h3>
+      <ReviewForm />
     </>
   );
 };

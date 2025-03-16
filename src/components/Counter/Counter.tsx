@@ -32,11 +32,19 @@ export const Counter: React.FC<CounterProps> = ({
 
   return (
     <div className={styles.counterControls}>
-      <Button onClick={handleDecrement} disabled={quantity === min}>
+      <Button
+        onClick={handleDecrement}
+        disabled={quantity === min}
+        type="button"
+      >
         -
       </Button>
       <span>{quantity}</span>
-      <Button onClick={handleIncrement} disabled={quantity === max}>
+      <Button
+        onClick={handleIncrement}
+        disabled={quantity === max}
+        type="button"
+      >
         +
       </Button>
     </div>
