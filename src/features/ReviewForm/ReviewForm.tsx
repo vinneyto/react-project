@@ -7,6 +7,9 @@ import { Input } from '../../components/Input/Input';
 import styles from './ReviewForm.module.css';
 import { useReviewFormReducer } from './useReviewFormReducer';
 
+const MIN_RATING = 1;
+const MAX_RATING = 5;
+
 export const ReviewForm: React.FC = () => {
   const {
     state,
@@ -35,10 +38,10 @@ export const ReviewForm: React.FC = () => {
         quantity={state.rating}
         increment={incrementRating}
         decrement={decrementRating}
-        min={1}
-        max={5}
+        min={MIN_RATING}
+        max={MAX_RATING}
       />
-      <Button type="button" className={styles.clearButton} onClick={clearForm}>
+      <Button type="button" secondary onClick={clearForm}>
         Clear
       </Button>
     </form>
