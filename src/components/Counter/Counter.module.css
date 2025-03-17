@@ -1,0 +1,11 @@
+.counterControls {
+  display: flex;
+  align-items: center;
+}
+
+.counterControls span {
+  margin: 0 5px;
+  display: inline-block;
+  width: 15px;
+  text-align: center;
+}
