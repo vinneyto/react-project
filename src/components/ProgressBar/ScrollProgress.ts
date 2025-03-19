@@ -1,15 +1,15 @@
 export class ScrollProgress {
   private element: HTMLDivElement;
-  private animationFrameId: number | null = null;
+  private animationFrameId: number;
+  private running = true;
   private prevScroll = 0;
 
   constructor(element: HTMLDivElement) {
     this.element = element;
-    this.handleScroll = this.handleScroll.bind(this);
     this.animationFrameId = requestAnimationFrame(this.handleScroll);
   }
 
-  private handleScroll() {
+  private handleScroll = () => {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     const scrollHeight =
@@ -21,12 +21,13 @@ export class ScrollProgress {
       this.prevScroll = totalScroll;
       this.element.style.width = `${totalScroll}%`;
     }
-    this.animationFrameId = requestAnimationFrame(this.handleScroll);
-  }
+    if (this.running) {
+      this.animationFrameId = requestAnimationFrame(this.handleScroll);
+    }
+  };
 
   destroy() {
-    if (this.animationFrameId !== null) {
-      cancelAnimationFrame(this.animationFrameId);
-    }
+    this.running = false;
+    cancelAnimationFrame(this.animationFrameId);
   }
 }
