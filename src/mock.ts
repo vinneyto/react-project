@@ -5,30 +5,30 @@ export const restaurants: Restaurant[] = [
     id: 'a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2',
     name: 'Dishoom',
     menu: [
-      {
-        id: 'd75f762a-eadd-49be-8918-ed0daa8dd024',
-        name: 'Chicken tikka masala',
-        price: 12,
-        ingredients: ['chicken', 'rice']
-      },
-      {
-        id: 'c3cb8f92-a2ed-4716-92a1-b6ea813e9049',
-        name: 'Naan',
-        price: 3,
-        ingredients: ['bread']
-      },
-      {
-        id: 'bd129641-c0eb-432b-84b6-8b81d2930358',
-        name: 'Samosa',
-        price: 8,
-        ingredients: ['chicken', 'bread']
-      },
-      {
-        id: 'e1a1d2e3-4f5b-6a7c-8b9d-0a1b2c3d4e5f',
-        name: 'Paneer tikka',
-        price: 10,
-        ingredients: ['paneer', 'spices']
-      },
+      // {
+      //   id: 'd75f762a-eadd-49be-8918-ed0daa8dd024',
+      //   name: 'Chicken tikka masala',
+      //   price: 12,
+      //   ingredients: ['chicken', 'rice']
+      // },
+      // {
+      //   id: 'c3cb8f92-a2ed-4716-92a1-b6ea813e9049',
+      //   name: 'Naan',
+      //   price: 3,
+      //   ingredients: ['bread']
+      // },
+      // {
+      //   id: 'bd129641-c0eb-432b-84b6-8b81d2930358',
+      //   name: 'Samosa',
+      //   price: 8,
+      //   ingredients: ['chicken', 'bread']
+      // },
+      // {
+      //   id: 'e1a1d2e3-4f5b-6a7c-8b9d-0a1b2c3d4e5f',
+      //   name: 'Paneer tikka',
+      //   price: 10,
+      //   ingredients: ['paneer', 'spices']
+      // },
       {
         id: 'f6a7b8c9-d0e1-2f3g-4h5i-6j7k8l9m0n1o',
         name: 'Lamb curry',
