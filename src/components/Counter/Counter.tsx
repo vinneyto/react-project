@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Button } from '..';
 import styles from './Counter.module.css';
@@ -18,17 +18,17 @@ export const Counter: React.FC<CounterProps> = ({
   min,
   max
 }) => {
-  const handleIncrement = () => {
+  const handleIncrement = useCallback(() => {
     if (quantity < max) {
       increment();
     }
-  };
+  }, [quantity, max, increment]);
 
-  const handleDecrement = () => {
+  const handleDecrement = useCallback(() => {
     if (quantity > min) {
       decrement();
     }
-  };
+  }, [quantity, min, decrement]);
 
   return (
     <div className={styles.counterControls}>

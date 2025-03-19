@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const useCounter = (initialValue: number) => {
   const [quantity, setQuantity] = useState(initialValue);
 
-  const increment = () => {
+  const increment = useCallback(() => {
     setQuantity(quantity + 1);
-  };
+  }, [quantity]);
 
-  const decrement = () => {
+  const decrement = useCallback(() => {
     setQuantity(quantity - 1);
-  };
+  }, [quantity]);
 
   return { quantity, increment, decrement };
 };

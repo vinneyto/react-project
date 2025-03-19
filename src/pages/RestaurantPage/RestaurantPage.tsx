@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { Tab, TabPanel } from '../../components';
 import { RestaurantCard } from '../../features';
@@ -8,6 +8,11 @@ import styles from './RestaurantPage.module.css';
 
 export const RestaurantPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState(restaurants[0].id);
+
+  const selectedRestaurant = useMemo(
+    () => findRestaurantSafe(restaurants, activeTab),
+    [activeTab]
+  );
 
   return (
     <div className={styles.container}>
@@ -22,9 +27,7 @@ export const RestaurantPage: React.FC = () => {
         ))}
       </TabPanel>
       <div className={styles.tabContent}>
-        <RestaurantCard
-          restaurant={findRestaurantSafe(restaurants, activeTab)}
-        />
+        <RestaurantCard key={activeTab} restaurant={selectedRestaurant} />
       </div>
     </div>
   );
