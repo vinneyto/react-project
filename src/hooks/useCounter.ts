@@ -4,12 +4,12 @@ export const useCounter = (initialValue: number) => {
   const [quantity, setQuantity] = useState(initialValue);
 
   const increment = useCallback(() => {
-    setQuantity(quantity + 1);
-  }, [quantity]);
+    setQuantity((quantity) => quantity + 1);
+  }, []);
 
   const decrement = useCallback(() => {
-    setQuantity(quantity - 1);
-  }, [quantity]);
+    setQuantity((quantity) => quantity + 1);
+  }, []);
 
   return { quantity, increment, decrement };
 };
