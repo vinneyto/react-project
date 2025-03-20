@@ -8,7 +8,7 @@ export const useCounter = (initialValue: number) => {
   }, []);
 
   const decrement = useCallback(() => {
-    setQuantity((quantity) => quantity + 1);
+    setQuantity((quantity) => quantity - 1);
   }, []);
 
   return { quantity, increment, decrement };
