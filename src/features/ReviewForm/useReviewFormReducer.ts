@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 
 interface ReviewFormState {
   name: string;
@@ -45,15 +45,27 @@ const reducer = (state: ReviewFormState, action: Action): ReviewFormState => {
 export const useReviewFormReducer = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const setName = (name: string) =>
-    dispatch({ type: 'SET_NAME', payload: name });
-  const setText = (text: string) =>
-    dispatch({ type: 'SET_TEXT', payload: text });
-  const setRating = (rating: number) =>
-    dispatch({ type: 'SET_RATING', payload: rating });
-  const incrementRating = () => dispatch({ type: 'INCREMENT_RATING' });
-  const decrementRating = () => dispatch({ type: 'DECREMENT_RATING' });
-  const clearForm = () => dispatch({ type: 'CLEAR' });
+  const setName = useCallback(
+    (name: string) => dispatch({ type: 'SET_NAME', payload: name }),
+    []
+  );
+  const setText = useCallback(
+    (text: string) => dispatch({ type: 'SET_TEXT', payload: text }),
+    []
+  );
+  const setRating = useCallback(
+    (rating: number) => dispatch({ type: 'SET_RATING', payload: rating }),
+    []
+  );
+  const incrementRating = useCallback(
+    () => dispatch({ type: 'INCREMENT_RATING' }),
+    []
+  );
+  const decrementRating = useCallback(
+    () => dispatch({ type: 'DECREMENT_RATING' }),
+    []
+  );
+  const clearForm = useCallback(() => dispatch({ type: 'CLEAR' }), []);
 
   return {
     state,

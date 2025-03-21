@@ -9,6 +9,8 @@ import styles from './RestaurantPage.module.css';
 export const RestaurantPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState(restaurants[0].id);
 
+  const selectedRestaurant = findRestaurantSafe(restaurants, activeTab);
+
   return (
     <div className={styles.container}>
       <TabPanel>
@@ -22,9 +24,7 @@ export const RestaurantPage: React.FC = () => {
         ))}
       </TabPanel>
       <div className={styles.tabContent}>
-        <RestaurantCard
-          restaurant={findRestaurantSafe(restaurants, activeTab)}
-        />
+        <RestaurantCard key={activeTab} restaurant={selectedRestaurant} />
       </div>
     </div>
   );

@@ -1,0 +1,15 @@
+.scrollProgressBarContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.scrollProgressBar {
+  height: 100%;
+  width: 0;
+  background-color: #4caf50;
+}
