@@ -3,11 +3,11 @@ import React, { ReactNode, useCallback, useState } from 'react';
 import { AuthContext } from '../../context';
 import { User } from '../../types';
 
-interface AuthProviderProps {
+export interface AuthProviderProps {
   children: ReactNode;
 }
 
-const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
   const login = useCallback((newUser: User) => {
@@ -20,5 +20,3 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   return <AuthContext value={{ user, login, logout }}>{children}</AuthContext>;
 };
-
-export default AuthProvider;

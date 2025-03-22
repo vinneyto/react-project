@@ -1,6 +1,6 @@
-import { Layout, ThemeProvider } from './features';
-import AuthProvider from './features/AuthProvider/AuthProvider';
+import { Layout } from './features';
 import { RestaurantPage } from './pages';
+import { AuthProvider, ThemeProvider } from './providers';
 import './theme.css';
 
 export function App() {

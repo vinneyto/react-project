@@ -10,7 +10,7 @@ export const UserAuth: React.FC = () => {
 
   const handleLogin = useCallback(() => {
     login(mockUser);
-  }, []);
+  }, [login]);
 
   return (
     <div className={styles.container}>
