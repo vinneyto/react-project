@@ -1,5 +1,5 @@
 .dishCard {
-  background-color: white;
+  background-color: var(--background-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,12 +12,13 @@
 .dishName {
   font-weight: bold;
   margin-bottom: 5px;
+  color: var(--primary-text-color);
 }
 
 .dishPrice,
 .dishIngredients {
   margin-bottom: 5px;
-  color: #666;
+  color: var(--secondary-text-color);
 }
 
 .dishControls {

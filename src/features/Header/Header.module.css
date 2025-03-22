@@ -1,6 +1,6 @@
 .header {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--header-footer-bg-color);
+  color: var(--header-text-color);
   padding: 20px;
   text-align: center;
 }
@@ -25,7 +25,7 @@ h1 {
 }
 
 .navList li a {
-  color: #fff;
+  color: var(--header-text-color);
   text-decoration: none;
 }
 

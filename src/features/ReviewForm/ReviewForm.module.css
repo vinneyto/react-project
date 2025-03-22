@@ -8,6 +8,8 @@
   resize: vertical;
   padding: 8px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--panel-border-color);
   border-radius: 4px;
+  background-color: var(--inner-panel-color);
+  color: var(--primary-text-color);
 }

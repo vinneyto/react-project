@@ -1,5 +1,5 @@
 .reviewsTitle {
-  color: #555;
+  color: var(--secondary-text-color);
   font-size: 20px;
   margin-top: 15px;
   padding-bottom: 5px;
@@ -11,8 +11,8 @@
 }
 
 .reviewItem {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--inner-panel-color);
+  border: 1px solid var(--panel-border-color);
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -26,12 +26,12 @@
 
 .reviewUser,
 .reviewRating {
+  color: var(--secondary-text-color);
   margin-bottom: 5px;
-  color: #666;
 }
 
 .reviewFormTitle {
-  color: #555;
+  color: var(--secondary-text-color);
   font-size: 20px;
   margin-top: 20px;
   padding-bottom: 5px;

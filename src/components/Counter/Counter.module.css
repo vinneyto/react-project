@@ -8,4 +8,5 @@
   display: inline-block;
   width: 15px;
   text-align: center;
+  color: var(--primary-text-color);
 }
