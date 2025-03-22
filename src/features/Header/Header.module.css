@@ -17,18 +17,25 @@ h1 {
   margin: 0;
 }
 
-.navList {
-  list-style: none;
-  padding: 0;
+.buttonContainer {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
-.navList li a {
-  color: var(--header-text-color);
-  text-decoration: none;
+.toggleButton {
+  background-color: var(--primary-text-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navList li a:hover {
-  text-decoration: underline;
+.toggleButton:hover {
+  opacity: 0.8;
 }
