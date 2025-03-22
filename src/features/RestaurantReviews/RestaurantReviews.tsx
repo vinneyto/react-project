@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useAuth } from '../../hooks';
 import { Review } from '../../types';
 import { ReviewCard } from '../ReviewCard';
 import { ReviewForm } from '../ReviewForm';
@@ -12,6 +13,8 @@ interface RestaurantReviewsProps {
 export const RestaurantReviews: React.FC<RestaurantReviewsProps> = ({
   reviews
 }) => {
+  const { user } = useAuth();
+
   return (
     <>
       <h3 className={styles.reviewsTitle}>Reviews</h3>
@@ -22,8 +25,12 @@ export const RestaurantReviews: React.FC<RestaurantReviewsProps> = ({
           </li>
         ))}
       </ul>
-      <h3 className={styles.reviewFormTitle}>Add a Review</h3>
-      <ReviewForm />
+      {user && (
+        <>
+          <h3 className={styles.reviewFormTitle}>Add a Review</h3>
+          <ReviewForm />
+        </>
+      )}
     </>
   );
 };

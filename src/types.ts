@@ -18,3 +18,8 @@ export interface Restaurant {
   menu: MenuItem[];
   reviews: Review[];
 }
+
+export interface User {
+  id: string;
+  name: string;
+}

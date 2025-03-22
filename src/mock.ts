@@ -1,4 +1,9 @@
-import { Restaurant } from './types';
+import { Restaurant, User } from './types';
+
+export const mockUser: User = {
+  id: '1',
+  name: 'Carlos García-López'
+};
 
 export const restaurants: Restaurant[] = [
   {
