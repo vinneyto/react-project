@@ -1,10 +1,12 @@
-import { Layout } from './features/Layout';
+import { Layout, ThemeProvider } from './features';
 import { RestaurantPage } from './pages';
 
 export function App() {
   return (
-    <Layout>
-      <RestaurantPage />
-    </Layout>
+    <ThemeProvider>
+      <Layout>
+        <RestaurantPage />
+      </Layout>
+    </ThemeProvider>
   );
 }
