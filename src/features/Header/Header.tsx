@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { RoundButton } from '../../components';
 import { useTheme } from '../../hooks';
 import styles from './Header.module.css';
 
@@ -11,12 +12,8 @@ export const Header: React.FC = () => {
       <div className={styles.content}>
         <h1>Restaurant Aggregator</h1>
         <div className={styles.buttonContainer}>
-          <button className={styles.toggleButton} onClick={toggleTheme}>
-            T
-          </button>
-          <button className={styles.toggleButton} onClick={toggleTheme}>
-            U
-          </button>
+          <RoundButton onClick={toggleTheme}>T</RoundButton>
+          <RoundButton onClick={toggleTheme}>U</RoundButton>
         </div>
       </div>
     </header>
