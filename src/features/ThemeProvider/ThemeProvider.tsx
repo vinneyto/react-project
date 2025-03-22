@@ -1,10 +1,17 @@
-import React, { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren, useCallback, useState } from 'react';
 
 import { Theme, ThemeContext } from '../../context';
-import { lightTheme } from '../../themes';
 
 export const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(lightTheme);
+  const [theme, setTheme] = useState<Theme>('light');
 
-  return <ThemeContext value={{ theme, setTheme }}>{children}</ThemeContext>;
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  }, []);
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
