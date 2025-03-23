@@ -9,3 +9,4 @@ export * from './Layout';
 export * from './DishCounter';
 export * from './ReviewForm';
 export * from './UserAuth';
+export * from './ThemeToggle';

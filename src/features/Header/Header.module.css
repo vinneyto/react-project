@@ -21,5 +21,3 @@ h1 {
   display: flex;
   gap: 10px;
 }
-
-/* Remove the toggleButton styles as they are now in RoundButton.module.css */

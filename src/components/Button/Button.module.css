@@ -1,13 +1,7 @@
 .button {
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 3px;
-
+  --button-font-size: 16px;
+  --button-padding: 16px;
+  --button-line-height: 2;
   --button-primary-bg: var(--primary-color);
   --button-primary-hover-bg: var(--primary-hover-color);
   --button-primary-disabled-bg: var(--inactive-color);
@@ -19,18 +13,38 @@
   --button-text-color: var(--text-color);
   --button-secondary-text-color: var(--primary-color);
   --button-secondary-hover-text-color: var(--primary-hover-color);
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: var(--button-font-size);
+  padding: 0 var(--button-padding);
+  line-height: var(--button-line-height);
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.rounded {
+  border-radius: 50%;
+  padding: 0;
+  width: calc(var(--button-line-height) * var(--button-font-size, 16px));
+  height: calc(var(--button-line-height) * var(--button-font-size, 16px));
 }
 
 .sm {
-  padding: 5px 10px;
+  --button-font-size: 12px;
+  --button-padding: 8px;
 }
 
 .nm {
-  padding: 10px 20px;
+  --button-font-size: 16px;
+  --button-padding: 12px;
 }
 
 .lg {
-  padding: 15px 30px;
+  --button-font-size: 20px;
+  --button-padding: 16px;
 }
 
 .primary {

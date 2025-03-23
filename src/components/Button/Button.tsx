@@ -6,6 +6,7 @@ import styles from './Button.module.css';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   secondary?: boolean;
   size?: 'sm' | 'nm' | 'lg';
+  isRounded?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -13,6 +14,7 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   secondary = false,
   size = 'nm',
+  isRounded = false,
   ...props
 }) => {
   return (
@@ -21,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
         styles.button,
         styles[size],
         secondary ? styles.secondary : styles.primary,
+        { [styles.rounded]: isRounded },
         className
       )}
       {...props}

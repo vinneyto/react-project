@@ -10,13 +10,13 @@ export interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const login = useCallback((newUser: User) => {
-    setUser(newUser);
-  }, []);
-
   const logout = useCallback(() => {
     setUser(null);
   }, []);
 
-  return <AuthContext value={{ user, login, logout }}>{children}</AuthContext>;
+  return (
+    <AuthContext value={{ user, login: setUser, logout }}>
+      {children}
+    </AuthContext>
+  );
 };
