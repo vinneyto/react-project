@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.username {
+  color: var(--header-text-color);
+  margin-right: 10px;
+}

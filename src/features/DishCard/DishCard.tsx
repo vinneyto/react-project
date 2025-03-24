@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Card } from '../../components';
+import { useAuth } from '../../hooks';
 import { MenuItem } from '../../types';
 import { DishCounter } from '../DishCounter';
 import styles from './DishCard.module.css';
@@ -10,6 +11,8 @@ interface DishCardProps {
 }
 
 export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
+  const { user } = useAuth();
+
   return (
     <Card className={styles.dishCard}>
       <div className={styles.dishInfo}>
@@ -19,7 +22,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dish }) => {
           Ingredients: {dish.ingredients.join(', ')}
         </div>
       </div>
-      <DishCounter />
+      {user && <DishCounter />}
     </Card>
   );
 };

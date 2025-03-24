@@ -1,22 +1,23 @@
 .reviewCard {
-  background-color: white;
+  background-color: var(--background-color);
 }
 
 .reviewText {
   font-weight: bold;
   margin-bottom: 5px;
+  color: var(--primary-text-color);
 }
 
 .reviewUser,
 .reviewRating {
   margin-bottom: 5px;
-  color: #666;
+  color: var(--secondary-text-color);
 }
 
 .ratingTextLow {
-  color: #d32f2f; /* intense red for ratings 1-3 */
+  color: var(--error-color); /* intense red for ratings 1-3 */
 }
 
 .ratingTextHigh {
-  color: #388532; /* intense green for ratings 4-5 */
+  color: var(--success-color); /* intense green for ratings 4-5 */
 }

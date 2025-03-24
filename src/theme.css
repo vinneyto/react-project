@@ -1,0 +1,43 @@
+/* Light Theme Variables */
+:root {
+  --header-footer-bg-color: #333;
+  --header-text-color: #fff;
+  --primary-text-color: #000;
+  --secondary-text-color: #666;
+  --background-color: #fff;
+  --outer-panel-color: #f9f9f9;
+  --inner-panel-color: #fff;
+  --panel-border-color: #ddd;
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --inactive-color: #cccccc;
+  --secondary-color: #ffffff;
+  --secondary-hover-color: #e6f2ff;
+  --error-color: #d32f2f;
+  --success-color: #388532;
+  --primary-disabled-color: #666666;
+  --secondary-disabled-bg: #f2f2f2;
+  --secondary-disabled-color: #cccccc;
+}
+
+/* Dark Theme Variables */
+.dark-theme {
+  --header-footer-bg-color: #000;
+  --header-text-color: #fff;
+  --primary-text-color: #fff;
+  --secondary-text-color: #ccc;
+  --background-color: #333;
+  --outer-panel-color: #444;
+  --inner-panel-color: #555;
+  --panel-border-color: #474747;
+  --primary-color: #ccc;
+  --primary-hover-color: #bebdbd;
+  --inactive-color: #777;
+  --secondary-color: #333;
+  --secondary-hover-color: #888;
+  --error-color: #d32f2f;
+  --success-color: #388532;
+  --primary-disabled-color: #444444;
+  --secondary-disabled-bg: #555555;
+  --secondary-disabled-color: #888888;
+}
