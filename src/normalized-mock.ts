@@ -1,29 +1,9 @@
-// Define interfaces for the mock data
-interface Restaurant {
-  id: string;
-  name: string;
-  menu: string[];
-  reviews: string[];
-}
+import { Dish, Restaurant, Review, User } from './types';
 
-interface Dish {
-  id: string;
-  name: string;
-  price: number;
-  ingredients: string[];
-}
-
-interface Review {
-  id: string;
-  userId: string;
-  text: string;
-  rating: number;
-}
-
-interface User {
-  id: string;
-  name: string;
-}
+export const mockUser: User = {
+  id: '1',
+  name: 'Carlos García-López'
+};
 
 export const normalizedRestaurants: Restaurant[] = [
   {

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { MenuItem } from '../../types';
-import { DishCard } from '../DishCard';
+import { Dish } from '../../types';
+import { DishCard } from '../DishCardFeature';
 import styles from './RestaurantMenu.module.css';
 
 interface RestaurantMenuProps {
-  menu: MenuItem[];
+  menu: Dish[];
 }
 
 export const RestaurantMenu: React.FC<RestaurantMenuProps> = ({ menu }) => {
