@@ -4,11 +4,13 @@ import { ReviewCard } from '../../components';
 import { useAppState } from '../../hooks';
 import { selectReviewById, selectUserById } from '../../store';
 
-interface ReviewCardProps {
+interface ReviewCardFeatureProps {
   reviewId: string;
 }
 
-export const ReviewCardFeature: React.FC<ReviewCardProps> = ({ reviewId }) => {
+export const ReviewCardFeature: React.FC<ReviewCardFeatureProps> = ({
+  reviewId
+}) => {
   const review = useAppState((state) =>
     selectReviewById(state.reviews, reviewId)
   );

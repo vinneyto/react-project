@@ -1,13 +1,19 @@
 import React from 'react';
 
 import { Counter } from '../../components';
-import { useCounter } from '../../hooks';
+import { useCartCounter } from './useCartCounter';
 
 const MIN_QUANTITY = 0;
 const MAX_QUANTITY = 5;
 
-export const DishCounter: React.FC = () => {
-  const { quantity, increment, decrement } = useCounter(0);
+export interface DishCounterFeatureProps {
+  dishId: string;
+}
+
+export const DishCounterFeature: React.FC<DishCounterFeatureProps> = ({
+  dishId
+}) => {
+  const { quantity, increment, decrement } = useCartCounter(dishId);
 
   return (
     <Counter

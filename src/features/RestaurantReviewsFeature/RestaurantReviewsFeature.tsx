@@ -4,13 +4,13 @@ import { RestaurantReviews } from '../../components';
 import { ReviewCardFeature } from '../ReviewCardFeature';
 import { ReviewFormFeature } from '../ReviewFormFeature/ReviewFormFeature';
 
-interface RestaurantReviewsProps {
+interface RestaurantReviewsFeatureProps {
   reviewIds: string[];
 }
 
-export const RestaurantReviewsFeature: React.FC<RestaurantReviewsProps> = ({
-  reviewIds
-}) => {
+export const RestaurantReviewsFeature: React.FC<
+  RestaurantReviewsFeatureProps
+> = ({ reviewIds }) => {
   return (
     <RestaurantReviews reviewForm={<ReviewFormFeature />}>
       {reviewIds.map((id) => (

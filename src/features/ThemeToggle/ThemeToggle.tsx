@@ -7,7 +7,7 @@ export const ThemeToggle: React.FC = () => {
   const { toggleTheme } = useTheme();
 
   return (
-    <Button onClick={toggleTheme} size="sm" isRounded>
+    <Button onClick={toggleTheme} size="sm" secondary isRounded>
       T
     </Button>
   );

@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import {
+  cartSliceReducer,
   dishSliceReducer,
   restaurantSliceReducer,
   reviewSliceReducer,
@@ -12,7 +13,8 @@ export const store = configureStore({
     restaurants: restaurantSliceReducer,
     dishes: dishSliceReducer,
     reviews: reviewSliceReducer,
-    users: userSliceReducer
+    users: userSliceReducer,
+    cart: cartSliceReducer
   }
 });
 
