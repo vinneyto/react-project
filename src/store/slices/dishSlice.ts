@@ -13,7 +13,7 @@ const dishSlice = createSlice({
   initialState,
   selectors: {
     selectDishes: (state) => state,
-    selectDishById: (state, id: string): Dish | undefined => state[id]
+    selectDishById: (state, id: string) => state[id]
   },
   reducers: {
     addDish: (state, action: PayloadAction<Dish>) => {

@@ -1,16 +1,18 @@
 import React from 'react';
 
 import { DishCard } from '../../components';
-import { useAuth } from '../../hooks';
-import { MenuItem } from '../../types';
+import { useAppState, useAuth } from '../../hooks';
+import { selectDishById } from '../../store';
 import { DishCounter } from '../DishCounter';
 
 interface DishCardFeatureProps {
-  dish: MenuItem;
+  dishId: string;
 }
 
-export const DishCardFeature: React.FC<DishCardFeatureProps> = ({ dish }) => {
+export const DishCardFeature: React.FC<DishCardFeatureProps> = ({ dishId }) => {
   const { user } = useAuth();
+
+  const dish = useAppState((state) => selectDishById(state.dishes, dishId));
 
   return <DishCard dish={dish} counter={user && <DishCounter />} />;
 };

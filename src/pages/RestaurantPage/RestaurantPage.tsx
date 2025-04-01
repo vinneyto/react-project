@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Tab, TabPanel } from '../../components';
-import { RestaurantCard } from '../../features';
+import { RestaurantCardFeature } from '../../features';
 import { useAppState } from '../../hooks';
 import {
   selectRestaurantById,
@@ -34,7 +34,10 @@ export const RestaurantPage: React.FC = () => {
       </TabPanel>
       <div className={styles.tabContent}>
         {selectedRestaurant && (
-          <RestaurantCard key={activeTab} restaurant={selectedRestaurant} />
+          <RestaurantCardFeature
+            key={activeTab}
+            restaurant={selectedRestaurant}
+          />
         )}
       </div>
     </div>

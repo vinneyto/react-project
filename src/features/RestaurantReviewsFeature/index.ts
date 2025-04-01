@@ -1,0 +1,1 @@
+export { RestaurantReviewsFeature } from './RestaurantReviewsFeature';

@@ -1,0 +1,1 @@
+export { RestaurantMenuFeature } from './RestaurantMenuFeature';

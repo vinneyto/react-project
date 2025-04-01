@@ -13,7 +13,7 @@ const userSlice = createSlice({
   initialState,
   selectors: {
     selectUsers: (state) => state,
-    selectUserById: (state, id: string): User | undefined => state[id]
+    selectUserById: (state, id: string) => state[id]
   },
   reducers: {
     addUser: (state, action: PayloadAction<User>) => {

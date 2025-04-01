@@ -13,7 +13,7 @@ const reviewSlice = createSlice({
   initialState,
   selectors: {
     selectReviews: (state) => state,
-    selectReviewById: (state, id: string): Review | undefined => state[id]
+    selectReviewById: (state, id: string) => state[id]
   },
   reducers: {
     addReview: (state, action: PayloadAction<Review>) => {
