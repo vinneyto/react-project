@@ -11,6 +11,7 @@ export const CartCountFeature: React.FC = () => {
     <Button
       onClick={() => console.log('show cart content')}
       size="sm"
+      secondary
       isRounded
     >
       {cartCount}
