@@ -31,10 +31,9 @@ const reviewSlice = createSlice({
 });
 
 export const { addReview, updateReview, deleteReview } = reviewSlice.actions;
-export const { selectReviews, selectReviewById } = reviewSlice.getSelectors();
+export const { selectReviews, selectReviewById } = reviewSlice.selectors;
 export const reviewSliceReducer = reviewSlice.reducer;
 
-export const selectReviewIds = createSelector(
-  [(state: ReviewState) => state],
-  (state) => Object.keys(state)
+export const selectReviewIds = createSelector([selectReviews], (state) =>
+  Object.keys(state)
 );

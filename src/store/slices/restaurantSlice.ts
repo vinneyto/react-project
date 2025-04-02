@@ -33,13 +33,13 @@ const restaurantSlice = createSlice({
 });
 
 export const { selectRestaurants, selectRestaurantById } =
-  restaurantSlice.getSelectors();
+  restaurantSlice.selectors;
 
 export const { addRestaurant, updateRestaurant, deleteRestaurant } =
   restaurantSlice.actions;
 
 export const selectRestaurantIds = createSelector(
-  [(state: RestaurantState) => state],
+  [selectRestaurants],
   (state) => Object.keys(state)
 );
 

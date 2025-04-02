@@ -8,6 +8,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   selectors: {
+    selectCartItems: (state: CartState) => state,
     selectCartItemById: (state, id: string) => state[id] || 0
   },
   reducers: {
@@ -30,11 +31,10 @@ const cartSlice = createSlice({
 
 export const { updateCartItem, removeFromCart } = cartSlice.actions;
 
-export const { selectCartItemById } = cartSlice.getSelectors();
+export const { selectCartItems, selectCartItemById } = cartSlice.selectors;
 
-export const selectTotalCartItems = createSelector(
-  [(state: CartState) => state],
-  (state) => Object.values(state).reduce((acc, quantity) => acc + quantity, 0)
+export const selectTotalCartItems = createSelector([selectCartItems], (state) =>
+  Object.values(state).reduce((acc, quantity) => acc + quantity, 0)
 );
 
 export const cartSliceReducer = cartSlice.reducer;

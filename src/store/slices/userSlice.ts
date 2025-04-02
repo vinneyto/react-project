@@ -31,10 +31,9 @@ const userSlice = createSlice({
 });
 
 export const { addUser, updateUser, deleteUser } = userSlice.actions;
-export const { selectUsers, selectUserById } = userSlice.getSelectors();
+export const { selectUsers, selectUserById } = userSlice.selectors;
 export const userSliceReducer = userSlice.reducer;
 
-export const selectUserIds = createSelector(
-  [(state: UserState) => state],
-  (state) => Object.keys(state)
+export const selectUserIds = createSelector([selectUsers], (state) =>
+  Object.keys(state)
 );

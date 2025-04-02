@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 
 import { Tab, TabPanel } from '../../components';
 import { RestaurantCardFeature } from '../../features';
-import { useAppState } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 import { selectRestaurantIds } from '../../store/slices/restaurantSlice';
 import styles from './RestaurantPage.module.css';
 
 export const RestaurantPage: React.FC = () => {
-  const restaurants = useAppState(({ restaurants }) => restaurants);
+  const restaurants = useAppSelector(({ restaurants }) => restaurants);
 
-  const restaurantIds = useAppState(({ restaurants }) =>
-    selectRestaurantIds(restaurants)
-  );
+  const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
 
   const [selectedRestaurantId, setSelectedRestaurantId] = useState(
     restaurantIds[0]
