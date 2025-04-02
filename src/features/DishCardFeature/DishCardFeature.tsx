@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { DishCard } from '../../components';
-import { useAppState, useAuth } from '../../hooks';
+import { useAppSelector, useAuth } from '../../hooks';
 import { selectDishById } from '../../store';
 import { DishCounterFeature } from '../DishCounterFeature';
 
@@ -12,7 +12,7 @@ interface DishCardFeatureProps {
 export const DishCardFeature: React.FC<DishCardFeatureProps> = ({ dishId }) => {
   const { user } = useAuth();
 
-  const dish = useAppState((state) => selectDishById(state.dishes, dishId));
+  const dish = useAppSelector((state) => selectDishById(state, dishId));
 
   return (
     <DishCard

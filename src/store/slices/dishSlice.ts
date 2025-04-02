@@ -31,10 +31,9 @@ const dishSlice = createSlice({
 });
 
 export const { addDish, updateDish, deleteDish } = dishSlice.actions;
-export const { selectDishes, selectDishById } = dishSlice.getSelectors();
+export const { selectDishes, selectDishById } = dishSlice.selectors;
 export const dishSliceReducer = dishSlice.reducer;
 
-export const selectDishIds = createSelector(
-  [(state: DishState) => state],
-  (state) => Object.keys(state)
+export const selectDishIds = createSelector([selectDishes], (state) =>
+  Object.keys(state)
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ReviewCard } from '../../components';
-import { useAppState } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 import { selectReviewById, selectUserById } from '../../store';
 
 interface ReviewCardFeatureProps {
@@ -11,13 +11,9 @@ interface ReviewCardFeatureProps {
 export const ReviewCardFeature: React.FC<ReviewCardFeatureProps> = ({
   reviewId
 }) => {
-  const review = useAppState((state) =>
-    selectReviewById(state.reviews, reviewId)
-  );
+  const review = useAppSelector((state) => selectReviewById(state, reviewId));
 
-  const user = useAppState((state) =>
-    selectUserById(state.users, review.userId)
-  );
+  const user = useAppSelector((state) => selectUserById(state, review.userId));
 
   return (
     <ReviewCard text={review.text} rating={review.rating} user={user.name} />
