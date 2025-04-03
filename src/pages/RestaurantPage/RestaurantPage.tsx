@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 
-import { Tab, TabPanel } from '../../components';
-import { RestaurantCardFeature } from '../../features';
+import { TabPanel } from '../../components';
+import { RestaurantCardFeature, RestaurantTabFeature } from '../../features';
 import { useAppSelector } from '../../hooks';
-import { selectRestaurantIds } from '../../store/slices/restaurantSlice';
+import { selectRestaurantIds } from '../../store';
 import styles from './RestaurantPage.module.css';
 
 export const RestaurantPage: React.FC = () => {
-  const restaurants = useAppSelector(({ restaurants }) => restaurants);
-
   const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
 
   const [selectedRestaurantId, setSelectedRestaurantId] = useState(
@@ -19,9 +17,9 @@ export const RestaurantPage: React.FC = () => {
     <div className={styles.container}>
       <TabPanel>
         {restaurantIds.map((id) => (
-          <Tab
+          <RestaurantTabFeature
             key={id}
-            label={restaurants[id].name}
+            restaurantId={id}
             isActive={selectedRestaurantId === id}
             onClick={() => setSelectedRestaurantId(id)}
           />
@@ -30,7 +28,7 @@ export const RestaurantPage: React.FC = () => {
       <div className={styles.tabContent}>
         <RestaurantCardFeature
           key={selectedRestaurantId}
-          restaurant={restaurants[selectedRestaurantId]}
+          restaurantId={selectedRestaurantId}
         />
       </div>
     </div>

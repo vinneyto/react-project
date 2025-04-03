@@ -1,17 +1,22 @@
 import React from 'react';
 
 import { RestaurantCard } from '../../components';
-import { Restaurant } from '../../types';
+import { useAppSelector } from '../../hooks';
+import { selectRestaurantById } from '../../store';
 import { RestaurantMenuFeature } from '../RestaurantMenuFeature';
 import { RestaurantReviewsFeature } from '../RestaurantReviewsFeature';
 
 interface RestaurantCardFeatureProps {
-  restaurant: Restaurant;
+  restaurantId: string;
 }
 
 export const RestaurantCardFeature: React.FC<RestaurantCardFeatureProps> = ({
-  restaurant
+  restaurantId
 }) => {
+  const restaurant = useAppSelector((state) =>
+    selectRestaurantById(state, restaurantId)
+  );
+
   return (
     <RestaurantCard
       name={restaurant.name}
