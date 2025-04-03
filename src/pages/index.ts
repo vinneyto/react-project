@@ -1,2 +1,3 @@
-export * from './RestaurantPage';
+export * from './RestaurantListPage';
+export * from './RestaurantDetailPage';
 export * from './HomePage';

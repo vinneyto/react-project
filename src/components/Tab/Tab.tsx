@@ -1,21 +1,23 @@
 import classnames from 'classnames';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import styles from './Tab.module.css';
 
 interface TabProps {
+  to: string;
   label: string;
-  isActive: boolean;
-  onClick: () => void;
 }
 
-export const Tab: React.FC<TabProps> = ({ label, isActive, onClick }) => {
+export const Tab: React.FC<TabProps> = ({ to, label }) => {
   return (
-    <div
-      className={classnames(styles.tab, { [styles.active]: isActive })}
-      onClick={onClick}
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        classnames(styles.tab, { [styles.active]: isActive })
+      }
     >
       {label}
-    </div>
+    </NavLink>
   );
 };
