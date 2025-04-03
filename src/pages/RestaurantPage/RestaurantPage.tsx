@@ -7,7 +7,7 @@ import { selectRestaurantIds } from '../../store';
 import styles from './RestaurantPage.module.css';
 
 export const RestaurantPage: React.FC = () => {
-  const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
+  const restaurantIds = useAppSelector(selectRestaurantIds);
 
   const [selectedRestaurantId, setSelectedRestaurantId] = useState(
     restaurantIds[0]
