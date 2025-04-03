@@ -15,5 +15,13 @@ export const RestaurantCardFeature: React.FC<RestaurantCardFeatureProps> = ({
     selectRestaurantById(state, restaurantId)
   );
 
+  // return (
+  //   <RestaurantCard
+  //     name={restaurant.name}
+  //     menu={<RestaurantMenuFeature dishIds={restaurant.menu} />}
+  //     reviews={<RestaurantReviewsFeature reviewIds={restaurant.reviews} />}
+  //   />
+  // );
+
   return <RestaurantCard name={restaurant.name} menu={null} reviews={null} />;
 };
