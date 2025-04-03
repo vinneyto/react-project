@@ -12,3 +12,4 @@ export * from './UserAuth';
 export * from './ThemeToggle';
 export * from './CartCountFeature';
 export * from './RestaurantTabFeature';
+export * from './DishCounterFeature';

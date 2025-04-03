@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './features';
 import {
+  DishPage,
   HomePage,
   RestaurantDetailPage,
   RestaurantListPage,
@@ -26,6 +27,7 @@ export function App() {
                   <Route path="reviews" element={<RestaurantReviewsPage />} />
                 </Route>
               </Route>
+              <Route path="dish/:dishId" element={<DishPage />} />
             </Routes>
           </Layout>
         </BrowserRouter>
