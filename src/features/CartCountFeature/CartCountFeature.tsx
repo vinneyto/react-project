@@ -5,7 +5,7 @@ import { useAppSelector } from '../../hooks';
 import { selectTotalCartItems } from '../../store';
 
 export const CartCountFeature: React.FC = () => {
-  const cartCount = useAppSelector((state) => selectTotalCartItems(state));
+  const cartCount = useAppSelector(selectTotalCartItems);
 
   return (
     <Button size="sm" secondary isRounded>
