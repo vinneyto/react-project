@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import { RestaurantCard } from '../../components';
 import { useAppSelector } from '../../hooks';
 import { selectRestaurantById } from '../../store';
 
-interface RestaurantCardFeatureProps {
+interface RestaurantCardFeatureProps extends PropsWithChildren {
   restaurantId: string;
 }
 
 export const RestaurantCardFeature: React.FC<RestaurantCardFeatureProps> = ({
-  restaurantId
+  restaurantId,
+  children
 }) => {
   const restaurant = useAppSelector((state) =>
     selectRestaurantById(state, restaurantId)
@@ -23,5 +24,5 @@ export const RestaurantCardFeature: React.FC<RestaurantCardFeatureProps> = ({
   //   />
   // );
 
-  return <RestaurantCard name={restaurant.name} menu={null} reviews={null} />;
+  return <RestaurantCard name={restaurant.name}>{children}</RestaurantCard>;
 };

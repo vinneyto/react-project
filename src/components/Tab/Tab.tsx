@@ -1,15 +1,14 @@
 import classnames from 'classnames';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import styles from './Tab.module.css';
 
-interface TabProps {
+interface TabProps extends PropsWithChildren {
   to: string;
-  label: string;
 }
 
-export const Tab: React.FC<TabProps> = ({ to, label }) => {
+export const Tab: React.FC<TabProps> = ({ to, children }) => {
   return (
     <NavLink
       to={to}
@@ -17,7 +16,7 @@ export const Tab: React.FC<TabProps> = ({ to, label }) => {
         classnames(styles.tab, { [styles.active]: isActive })
       }
     >
-      {label}
+      {children}
     </NavLink>
   );
 };
