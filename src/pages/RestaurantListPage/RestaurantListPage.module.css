@@ -24,3 +24,10 @@
 .tabContent {
   padding-top: 20px;
 }
+
+.placeholder {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 20px;
+}
