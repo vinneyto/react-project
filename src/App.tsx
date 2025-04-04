@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import { Placeholder } from './components';
 import { Layout } from './features';
 import {
   DishPage,
@@ -21,6 +22,10 @@ export function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/restaurants" element={<RestaurantListPage />}>
+                <Route
+                  index
+                  element={<Placeholder>Please select restaurant</Placeholder>}
+                />
                 <Route path=":restaurantId" element={<RestaurantDetailPage />}>
                   <Route index element={<Navigate to="menu" replace />} />
                   <Route path="menu" element={<RestaurantMenuPage />} />

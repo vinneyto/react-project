@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { TabPanel } from '../../components';
 import { RestaurantTabFeature } from '../../features';
@@ -9,7 +9,6 @@ import styles from './RestaurantListPage.module.css';
 
 export const RestaurantListPage: React.FC = () => {
   const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
-  const { restaurantId } = useParams();
 
   return (
     <div className={styles.container}>
@@ -19,11 +18,7 @@ export const RestaurantListPage: React.FC = () => {
         ))}
       </TabPanel>
       <div className={styles.tabContent}>
-        {restaurantId ? (
-          <Outlet />
-        ) : (
-          <div className={styles.placeholder}>Please select a restaurant</div>
-        )}
+        <Outlet />
       </div>
     </div>
   );

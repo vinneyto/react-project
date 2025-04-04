@@ -1,13 +1,11 @@
 import React from 'react';
-import { Outlet, useParams, useResolvedPath } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 
 import { Placeholder, Tab, TabPanel } from '../../components';
 import { RestaurantCardFeature } from '../../features';
 
 export const RestaurantDetailPage: React.FC = () => {
-  const { restaurantId } = useParams<{ restaurantId: string }>();
-  const { pathname: basePath } = useResolvedPath('');
-
+  const { restaurantId } = useParams();
   if (!restaurantId) {
     return <Placeholder>Restaurant not found</Placeholder>;
   }
@@ -15,8 +13,8 @@ export const RestaurantDetailPage: React.FC = () => {
   return (
     <RestaurantCardFeature key={restaurantId} restaurantId={restaurantId}>
       <TabPanel>
-        <Tab to={`${basePath}/menu`}>Menu</Tab>
-        <Tab to={`${basePath}/reviews`}>Reviews</Tab>
+        <Tab to="menu">Menu</Tab>
+        <Tab to="reviews">Reviews</Tab>
       </TabPanel>
       <Outlet />
     </RestaurantCardFeature>

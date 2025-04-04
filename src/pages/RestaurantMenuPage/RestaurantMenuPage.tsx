@@ -5,7 +5,7 @@ import { Placeholder } from '../../components';
 import { RestaurantMenuFeature } from '../../features';
 
 export const RestaurantMenuPage: React.FC = () => {
-  const { restaurantId } = useParams<{ restaurantId: string }>();
+  const { restaurantId } = useParams();
 
   if (!restaurantId) {
     return <Placeholder>Restaurant not found</Placeholder>;

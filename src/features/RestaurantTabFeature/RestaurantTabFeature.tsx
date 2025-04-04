@@ -1,5 +1,4 @@
 import React from 'react';
-import { useResolvedPath } from 'react-router-dom';
 
 import { Tab } from '../../components';
 import { useAppSelector } from '../../hooks';
@@ -16,7 +15,5 @@ export const RestaurantTabFeature: React.FC<RestaurantTabFeatureProps> = ({
     selectRestaurantById(state, restaurantId)
   );
 
-  const { pathname: basePath } = useResolvedPath('');
-
-  return <Tab to={`${basePath}/${restaurantId}`}>{restaurant.name}</Tab>;
+  return <Tab to={restaurantId}>{restaurant.name}</Tab>;
 };
