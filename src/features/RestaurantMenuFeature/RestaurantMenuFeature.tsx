@@ -21,7 +21,6 @@ export const RestaurantMenuFeature: React.FC<RestaurantMenuFeatureProps> = ({
       {menu.map((id) => (
         <li key={id}>
           <DishLinkFeature dishId={id} />
-          {/* <DishCardFeature dishId={id} /> */}
         </li>
       ))}
     </RestaurantMenu>
