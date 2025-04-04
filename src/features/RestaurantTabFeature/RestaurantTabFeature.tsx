@@ -5,18 +5,15 @@ import { useAppSelector } from '../../hooks';
 import { selectRestaurantById } from '../../store/slices/restaurantSlice';
 
 export interface RestaurantTabFeatureProps {
-  isActive: boolean;
   restaurantId: string;
-  onClick: () => void;
 }
 
 export const RestaurantTabFeature: React.FC<RestaurantTabFeatureProps> = ({
-  restaurantId,
-  ...props
+  restaurantId
 }) => {
   const restaurant = useAppSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
 
-  return <Tab label={restaurant.name} {...props} />;
+  return <Tab to={restaurantId}>{restaurant.name}</Tab>;
 };

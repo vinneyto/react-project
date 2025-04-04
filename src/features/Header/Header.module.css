@@ -1,7 +1,6 @@
 .header {
   background-color: var(--header-footer-bg-color);
   color: var(--header-text-color);
-  padding: 20px;
   text-align: center;
 }
 
@@ -9,8 +8,31 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.logo,
+.navLink {
+  background-color: var(--header-footer-bg-color);
+  color: var(--header-text-color);
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
 
 h1 {
@@ -20,4 +42,5 @@ h1 {
 .buttonContainer {
   display: flex;
   gap: 10px;
+  padding: 0 20px;
 }

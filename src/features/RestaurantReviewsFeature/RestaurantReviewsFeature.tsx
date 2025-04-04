@@ -1,19 +1,25 @@
 import React from 'react';
 
 import { RestaurantReviews } from '../../components';
+import { useAppSelector } from '../../hooks';
+import { selectRestaurantById } from '../../store';
 import { ReviewCardFeature } from '../ReviewCardFeature';
 import { ReviewFormFeature } from '../ReviewFormFeature/ReviewFormFeature';
 
 interface RestaurantReviewsFeatureProps {
-  reviewIds: string[];
+  restaurantId: string;
 }
 
 export const RestaurantReviewsFeature: React.FC<
   RestaurantReviewsFeatureProps
-> = ({ reviewIds }) => {
+> = ({ restaurantId }) => {
+  const { reviews } = useAppSelector((state) =>
+    selectRestaurantById(state, restaurantId)
+  );
+
   return (
     <RestaurantReviews reviewForm={<ReviewFormFeature />}>
-      {reviewIds.map((id) => (
+      {reviews.map((id) => (
         <li key={id}>
           <ReviewCardFeature reviewId={id} />
         </li>
