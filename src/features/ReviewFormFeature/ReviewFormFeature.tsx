@@ -3,14 +3,14 @@ import React from 'react';
 import { Button } from '../../components/Button';
 import { Counter } from '../../components/Counter';
 import { Input } from '../../components/Input';
-import styles from './ReviewForm.module.css';
+import styles from './ReviewFormFeature.module.css';
 import {
   MAX_RATING,
   MIN_RATING,
   useReviewFormReducer
 } from './useReviewFormReducer';
 
-export const ReviewForm: React.FC = () => {
+export const ReviewFormFeature: React.FC = () => {
   const {
     state,
     setName,

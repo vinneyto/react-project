@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
 
-import { Tab, TabPanel } from '../../components';
-import { RestaurantCard } from '../../features';
-import { findRestaurantSafe } from '../../helpers';
-import { restaurants } from '../../mock';
+import { TabPanel } from '../../components';
+import { RestaurantCardFeature, RestaurantTabFeature } from '../../features';
+import { useAppSelector } from '../../hooks';
+import { selectRestaurantIds } from '../../store';
 import styles from './RestaurantPage.module.css';
 
 export const RestaurantPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(restaurants[0].id);
+  const restaurantIds = useAppSelector(selectRestaurantIds);
 
-  const selectedRestaurant = findRestaurantSafe(restaurants, activeTab);
+  const [selectedRestaurantId, setSelectedRestaurantId] = useState(
+    restaurantIds[0]
+  );
 
   return (
     <div className={styles.container}>
       <TabPanel>
-        {restaurants.map((restaurant) => (
-          <Tab
-            key={restaurant.id}
-            label={restaurant.name}
-            isActive={activeTab === restaurant.id}
-            onClick={() => setActiveTab(restaurant.id)}
+        {restaurantIds.map((id) => (
+          <RestaurantTabFeature
+            key={id}
+            restaurantId={id}
+            isActive={selectedRestaurantId === id}
+            onClick={() => setSelectedRestaurantId(id)}
           />
         ))}
       </TabPanel>
       <div className={styles.tabContent}>
-        <RestaurantCard key={activeTab} restaurant={selectedRestaurant} />
+        <RestaurantCardFeature
+          key={selectedRestaurantId}
+          restaurantId={selectedRestaurantId}
+        />
       </div>
     </div>
   );

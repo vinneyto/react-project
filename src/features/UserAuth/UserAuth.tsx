@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { Button } from '../../components';
 import { useAuth } from '../../hooks';
-import { mockUser } from '../../mock';
+import { mockUser } from '../../normalized-mock';
 import styles from './UserAuth.module.css';
 
 export const UserAuth: React.FC = () => {
