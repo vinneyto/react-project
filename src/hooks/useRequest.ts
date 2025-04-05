@@ -15,7 +15,7 @@ export const useRequest = <T extends (...args: any[]) => any>(
   const [request, setRequest] = useState<GetThunkAPI<unknown> | null>(null);
 
   const requestStatus = useAppSelector((state) =>
-    selectRequestStatus(state, request?.requestId || '')
+    selectRequestStatus(state, request?.requestId ?? '')
   );
 
   useEffect(() => {

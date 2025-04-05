@@ -1,6 +1,6 @@
 import { GetThunkAPI, PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-export type RequestStatus = 'pending' | 'rejected' | 'fulfilled';
+export type RequestStatus = 'idle' | 'pending' | 'rejected' | 'fulfilled';
 export type AsyncPayloadAction<T = unknown> = PayloadAction<
   T,
   string,

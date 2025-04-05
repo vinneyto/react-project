@@ -1,7 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Placeholder, TabPanel } from '../../components';
+import { TabPanel } from '../../components';
+import RequestGuard from '../../components/RequestGuard/RequestGuard';
 import { RestaurantTabFeature } from '../../features';
 import { useAppSelector, useRequest } from '../../hooks';
 import { getRestaurantList, selectRestaurantIds } from '../../store';
@@ -12,24 +13,22 @@ export const RestaurantListPage: React.FC = () => {
 
   const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
 
-  if (status === 'pending') {
-    return <Placeholder>Loading restaurants...</Placeholder>;
-  }
-
-  if (status === 'rejected') {
-    return <Placeholder>Failed to load restaurants</Placeholder>;
-  }
-
   return (
-    <div className={styles.container}>
-      <TabPanel>
-        {restaurantIds.map((id) => (
-          <RestaurantTabFeature key={id} restaurantId={id} />
-        ))}
-      </TabPanel>
-      <div className={styles.tabContent}>
-        <Outlet />
+    <RequestGuard
+      status={status}
+      pendingText="Loading..."
+      errorText="Error loading restaurants"
+    >
+      <div className={styles.container}>
+        <TabPanel>
+          {restaurantIds.map((id) => (
+            <RestaurantTabFeature key={id} restaurantId={id} />
+          ))}
+        </TabPanel>
+        <div className={styles.tabContent}>
+          <Outlet />
+        </div>
       </div>
-    </div>
+    </RequestGuard>
   );
 };

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { Restaurant } from '../../types';
-import { selectRestaurantsTotal } from '../entities';
+import { selectRestaurantById } from '../entities';
 import type { RootState } from '../store';
 
 export const getRestaurantById = createAsyncThunk<
@@ -28,6 +28,6 @@ export const getRestaurantById = createAsyncThunk<
     }
   },
   {
-    condition: (_, { getState }) => !selectRestaurantsTotal(getState())
+    condition: (id, { getState }) => !selectRestaurantById(getState(), id)
   }
 );

@@ -16,5 +16,9 @@ export const RestaurantCardFeature: React.FC<RestaurantCardFeatureProps> = ({
     selectRestaurantById(state, restaurantId)
   );
 
+  if (!restaurant) {
+    return null;
+  }
+
   return <RestaurantCard name={restaurant.name}>{children}</RestaurantCard>;
 };
