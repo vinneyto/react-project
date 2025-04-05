@@ -1,15 +1,23 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Placeholder } from '../../components';
+import { RequestGuard } from '../../components';
 import { RestaurantMenuFeature } from '../../features';
+import { useRequest } from '../../hooks';
+import { getDishesByRestaurantId } from '../../store';
 
 export const RestaurantMenuPage: React.FC = () => {
   const { restaurantId } = useParams();
 
-  if (!restaurantId) {
-    return <Placeholder>Restaurant not found</Placeholder>;
-  }
+  const status = useRequest(getDishesByRestaurantId, restaurantId ?? '');
 
-  return <RestaurantMenuFeature restaurantId={restaurantId} />;
+  return (
+    <RequestGuard
+      status={status}
+      pendingText="Loading..."
+      errorText="Error loading menu"
+    >
+      <RestaurantMenuFeature restaurantId={restaurantId ?? ''} />
+    </RequestGuard>
+  );
 };

@@ -16,6 +16,8 @@ export const RestaurantCardFeature: React.FC<RestaurantCardFeatureProps> = ({
     selectRestaurantById(state, restaurantId)
   );
 
+  // интересно как лучше обрабатывать такие ситуации
+  // запрос в статусе idle (первый рендер допустим, или данные уже есть)
   if (!restaurant) {
     return null;
   }

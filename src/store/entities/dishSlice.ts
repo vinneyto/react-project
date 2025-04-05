@@ -1,39 +1,30 @@
-import { PayloadAction, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import { normalize } from '../../helpers';
-import { normalizedDishes } from '../../normalized-mock';
 import { Dish } from '../../types';
+import { getDishesByRestaurantId } from '../requests';
 
-export type DishState = Record<string, Dish>;
-
-const initialState: DishState = normalize(normalizedDishes);
+export const dishAdapter = createEntityAdapter<Dish>();
 
 const dishSlice = createSlice({
   name: 'dishes',
-  initialState,
+  initialState: dishAdapter.getInitialState(),
   selectors: {
-    selectDishes: (state) => state,
-    selectDishById: (state, id: string) => state[id]
+    selectDishesState: (state) => state
   },
-  reducers: {
-    addDish: (state, action: PayloadAction<Dish>) => {
-      const { payload } = action;
-      state[payload.id] = payload;
-    },
-    updateDish: (state, action: PayloadAction<Dish>) => {
-      const { payload } = action;
-      state[payload.id] = payload;
-    },
-    deleteDish: (state, action: PayloadAction<string>) => {
-      delete state[action.payload];
-    }
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getDishesByRestaurantId.fulfilled, (state, action) => {
+      dishAdapter.setAll(state, action.payload);
+    });
   }
 });
 
-export const { addDish, updateDish, deleteDish } = dishSlice.actions;
-export const { selectDishes, selectDishById } = dishSlice.selectors;
 export const dishSliceReducer = dishSlice.reducer;
 
-export const selectDishIds = createSelector([selectDishes], (state) =>
-  Object.keys(state)
-);
+const { selectDishesState } = dishSlice.selectors;
+
+export const {
+  selectIds: selectDishIds,
+  selectById: selectDishById,
+  selectTotal: selectDishesTotal
+} = dishAdapter.getSelectors(selectDishesState);

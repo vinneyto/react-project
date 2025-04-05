@@ -10,7 +10,7 @@ interface RequestGuardProps {
   children: React.ReactNode;
 }
 
-const RequestGuard: React.FC<RequestGuardProps> = ({
+export const RequestGuard: React.FC<RequestGuardProps> = ({
   status,
   pendingText,
   errorText,
@@ -28,5 +28,3 @@ const RequestGuard: React.FC<RequestGuardProps> = ({
 
   return <>{children}</>;
 };
-
-export default RequestGuard;

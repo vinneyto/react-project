@@ -14,6 +14,10 @@ export const DishCardFeature: React.FC<DishCardFeatureProps> = ({ dishId }) => {
 
   const dish = useAppSelector((state) => selectDishById(state, dishId));
 
+  if (!dish) {
+    return null;
+  }
+
   return (
     <DishCard
       dish={dish}

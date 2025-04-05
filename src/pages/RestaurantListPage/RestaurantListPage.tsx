@@ -1,8 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { TabPanel } from '../../components';
-import RequestGuard from '../../components/RequestGuard/RequestGuard';
+import { RequestGuard, TabPanel } from '../../components';
 import { RestaurantTabFeature } from '../../features';
 import { useAppSelector, useRequest } from '../../hooks';
 import { getRestaurantList, selectRestaurantIds } from '../../store';

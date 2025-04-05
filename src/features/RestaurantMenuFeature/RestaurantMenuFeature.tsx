@@ -12,9 +12,15 @@ interface RestaurantMenuFeatureProps {
 export const RestaurantMenuFeature: React.FC<RestaurantMenuFeatureProps> = ({
   restaurantId
 }) => {
-  const { menu } = useAppSelector((state) =>
+  const restaurant = useAppSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
+
+  if (!restaurant) {
+    return null;
+  }
+
+  const { menu } = restaurant;
 
   return (
     <RestaurantMenu>
