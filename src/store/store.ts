@@ -7,7 +7,7 @@ import {
   restaurantSliceReducer,
   reviewSliceReducer,
   userSliceReducer
-} from './slices';
+} from './entities';
 
 export const store = configureStore({
   reducer: {

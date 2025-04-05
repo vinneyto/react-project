@@ -4,11 +4,11 @@ import { Outlet } from 'react-router-dom';
 import { TabPanel } from '../../components';
 import { RestaurantTabFeature } from '../../features';
 import { useAppSelector } from '../../hooks';
-import { selectRestaurantIds } from '../../store/slices/restaurantSlice';
+import { selectRestaurantsIds } from '../../store';
 import styles from './RestaurantListPage.module.css';
 
 export const RestaurantListPage: React.FC = () => {
-  const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
+  const restaurantIds = useAppSelector((state) => selectRestaurantsIds(state));
 
   return (
     <div className={styles.container}>
