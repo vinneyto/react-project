@@ -1,5 +1,3 @@
-import { Restaurant } from './types';
-
 export const getRatingClass = (rating: number, high: string, low: string) => {
   if (rating >= 4) {
     return high;
@@ -8,22 +6,26 @@ export const getRatingClass = (rating: number, high: string, low: string) => {
   }
 };
 
-export const findRestaurantSafe = (restaurants: Restaurant[], id: string) => {
-  const restaurant = restaurants.find((r) => r.id === id);
-  if (!restaurant) {
-    throw new Error(`Restaurant with id ${id} not found`);
+export async function loadEntity<T>(url: string): Promise<T> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch: ${response.statusText}`);
   }
-  return restaurant;
-};
+  const data = (await response.json()) as unknown;
+  if (typeof data !== 'object' || data === null || Array.isArray(data)) {
+    throw new Error('Invalid data format');
+  }
+  return data as T;
+}
 
-export function normalize<T extends { id: string }>(
-  array: T[]
-): Record<string, T> {
-  return array.reduce(
-    (acc, item) => {
-      acc[item.id] = item;
-      return acc;
-    },
-    {} as Record<string, T>
-  );
+export async function loadEntityList<T>(url: string): Promise<T[]> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch: ${response.statusText}`);
+  }
+  const data = (await response.json()) as unknown;
+  if (!Array.isArray(data)) {
+    throw new Error('Invalid data format: expected an array');
+  }
+  return data as T[];
 }

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { loadEntityList } from '../../helpers';
 import { Restaurant } from '../../types';
 import { selectRestaurantsTotal } from '../entities';
 import type { RootState } from '../store';
@@ -12,15 +13,7 @@ export const getRestaurants = createAsyncThunk<
   'restaurants/getRestaurants',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('/api/restaurants');
-      if (!response.ok) {
-        throw new Error(`Failed to fetch: ${response.statusText}`);
-      }
-      const data = (await response.json()) as unknown;
-      if (!Array.isArray(data)) {
-        throw new Error('Invalid data format');
-      }
-      return data as Restaurant[];
+      return loadEntityList<Restaurant>('/api/restaurants');
     } catch (error) {
       return rejectWithValue(
         error instanceof Error ? error.message : 'An error occurred'
