@@ -1,39 +1,30 @@
-import { PayloadAction, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import { normalize } from '../../helpers';
-import { normalizedUsers } from '../../normalized-mock';
 import { User } from '../../types';
+import { getUsers } from '../requests';
 
-export type UserState = Record<string, User>;
-
-const initialState: UserState = normalize(normalizedUsers);
+export const userAdapter = createEntityAdapter<User>();
 
 const userSlice = createSlice({
   name: 'users',
-  initialState,
+  initialState: userAdapter.getInitialState(),
   selectors: {
-    selectUsers: (state) => state,
-    selectUserById: (state, id: string) => state[id]
+    selectUsersState: (state) => state
   },
-  reducers: {
-    addUser: (state, action: PayloadAction<User>) => {
-      const { payload } = action;
-      state[payload.id] = payload;
-    },
-    updateUser: (state, action: PayloadAction<User>) => {
-      const { payload } = action;
-      state[payload.id] = payload;
-    },
-    deleteUser: (state, action: PayloadAction<string>) => {
-      delete state[action.payload];
-    }
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getUsers.fulfilled, (state, action) => {
+      userAdapter.setAll(state, action.payload);
+    });
   }
 });
 
-export const { addUser, updateUser, deleteUser } = userSlice.actions;
-export const { selectUsers, selectUserById } = userSlice.selectors;
 export const userSliceReducer = userSlice.reducer;
 
-export const selectUserIds = createSelector([selectUsers], (state) =>
-  Object.keys(state)
-);
+const { selectUsersState } = userSlice.selectors;
+
+export const {
+  selectIds: selectUserIds,
+  selectById: selectUserById,
+  selectTotal: selectUsersTotal
+} = userAdapter.getSelectors(selectUsersState);

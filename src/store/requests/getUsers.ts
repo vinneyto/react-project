@@ -1,18 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { Restaurant } from '../../types';
-import { selectRestaurantsTotal } from '../entities';
+import { User } from '../../types';
+import { selectUsersTotal } from '../entities';
 import type { RootState } from '../store';
 
-export const getRestaurantList = createAsyncThunk<
-  Restaurant[],
-  void,
-  { state: RootState }
->(
-  'restaurants/getRestaurants',
+export const getUsers = createAsyncThunk<User[], void, { state: RootState }>(
+  'users/getUsers',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('/api/restaurants');
+      const response = await fetch('/api/users');
       if (!response.ok) {
         throw new Error(`Failed to fetch: ${response.statusText}`);
       }
@@ -20,7 +16,7 @@ export const getRestaurantList = createAsyncThunk<
       if (!Array.isArray(data)) {
         throw new Error('Invalid data format');
       }
-      return data as Restaurant[];
+      return data as User[];
     } catch (error) {
       return rejectWithValue(
         error instanceof Error ? error.message : 'An error occurred'
@@ -28,6 +24,6 @@ export const getRestaurantList = createAsyncThunk<
     }
   },
   {
-    condition: (_, { getState }) => !selectRestaurantsTotal(getState())
+    condition: (_, { getState }) => !selectUsersTotal(getState())
   }
 );

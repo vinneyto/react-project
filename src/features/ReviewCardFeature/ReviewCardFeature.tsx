@@ -13,7 +13,11 @@ export const ReviewCardFeature: React.FC<ReviewCardFeatureProps> = ({
 }) => {
   const review = useAppSelector((state) => selectReviewById(state, reviewId));
 
-  const user = useAppSelector((state) => selectUserById(state, review.userId));
+  const user = useAppSelector((state) => selectUserById(state, review?.userId));
+
+  if (!review || !user) {
+    return null;
+  }
 
   return (
     <ReviewCard text={review.text} rating={review.rating} user={user.name} />

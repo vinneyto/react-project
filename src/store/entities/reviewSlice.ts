@@ -1,39 +1,30 @@
-import { PayloadAction, createSelector, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import { normalize } from '../../helpers';
-import { normalizedReviews } from '../../normalized-mock';
 import { Review } from '../../types';
+import { getReviewsByRestaurantId } from '../requests';
 
-export type ReviewState = Record<string, Review>;
-
-const initialState: ReviewState = normalize(normalizedReviews);
+export const reviewAdapter = createEntityAdapter<Review>();
 
 const reviewSlice = createSlice({
   name: 'reviews',
-  initialState,
+  initialState: reviewAdapter.getInitialState(),
   selectors: {
-    selectReviews: (state) => state,
-    selectReviewById: (state, id: string) => state[id]
+    selectReviewsState: (state) => state
   },
-  reducers: {
-    addReview: (state, action: PayloadAction<Review>) => {
-      const { payload } = action;
-      state[payload.id] = payload;
-    },
-    updateReview: (state, action: PayloadAction<Review>) => {
-      const { payload } = action;
-      state[payload.id] = payload;
-    },
-    deleteReview: (state, action: PayloadAction<string>) => {
-      delete state[action.payload];
-    }
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getReviewsByRestaurantId.fulfilled, (state, action) => {
+      reviewAdapter.setAll(state, action.payload);
+    });
   }
 });
 
-export const { addReview, updateReview, deleteReview } = reviewSlice.actions;
-export const { selectReviews, selectReviewById } = reviewSlice.selectors;
 export const reviewSliceReducer = reviewSlice.reducer;
 
-export const selectReviewIds = createSelector([selectReviews], (state) =>
-  Object.keys(state)
-);
+const { selectReviewsState } = reviewSlice.selectors;
+
+export const {
+  selectIds: selectReviewIds,
+  selectById: selectReviewById,
+  selectTotal: selectReviewsTotal
+} = reviewAdapter.getSelectors(selectReviewsState);

@@ -13,9 +13,15 @@ interface RestaurantReviewsFeatureProps {
 export const RestaurantReviewsFeature: React.FC<
   RestaurantReviewsFeatureProps
 > = ({ restaurantId }) => {
-  const { reviews } = useAppSelector((state) =>
+  const restaurant = useAppSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
+
+  if (!restaurant) {
+    return null;
+  }
+
+  const { reviews } = restaurant;
 
   return (
     <RestaurantReviews reviewForm={<ReviewFormFeature />}>
