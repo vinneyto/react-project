@@ -21,7 +21,6 @@ export const useRequest = <T extends (...args: any[]) => any>(
   useEffect(() => {
     const request = dispatch(thunk(...args)) as GetThunkAPI<unknown>;
     setRequest(request);
-    console.log('request', request);
 
     return () => {
       request.abort();

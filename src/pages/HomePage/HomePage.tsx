@@ -1,16 +1,14 @@
 import React from 'react';
 
+import { Placeholder } from '../../components';
 import styles from './HomePage.module.css';
 
 export const HomePage: React.FC = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <p>Discover the best restaurants near you!</p>
+        <Placeholder>Discover the best restaurants near you!</Placeholder>
       </main>
-      <footer className={styles.footer}>
-        <p>&copy; 2023 Restaurant Aggregator</p>
-      </footer>
     </div>
   );
 };

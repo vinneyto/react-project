@@ -1,14 +1,24 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { TabPanel } from '../../components';
+import { Placeholder, TabPanel } from '../../components';
 import { RestaurantTabFeature } from '../../features';
-import { useAppSelector } from '../../hooks';
-import { selectRestaurantsIds } from '../../store';
+import { useAppSelector, useRequest } from '../../hooks';
+import { getRestaurantList, selectRestaurantIds } from '../../store';
 import styles from './RestaurantListPage.module.css';
 
 export const RestaurantListPage: React.FC = () => {
-  const restaurantIds = useAppSelector((state) => selectRestaurantsIds(state));
+  const status = useRequest(getRestaurantList);
+
+  const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
+
+  if (status === 'pending') {
+    return <Placeholder>Loading restaurants...</Placeholder>;
+  }
+
+  if (status === 'rejected') {
+    return <Placeholder>Failed to load restaurants</Placeholder>;
+  }
 
   return (
     <div className={styles.container}>

@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 import { Restaurant } from '../../types';
-import { getRestaurants } from '../requests/getRestaurants';
+import { getRestaurantById, getRestaurantList } from '../requests';
 
 export const restaurantAdapter = createEntityAdapter<Restaurant>();
 
@@ -10,13 +10,16 @@ const restaurantSlice = createSlice({
   initialState: restaurantAdapter.getInitialState(),
   selectors: {
     selectRestaurantsState: (state) => state
-    // selectRestaurantById: (state, id: string) => state[id]
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getRestaurants.fulfilled, (state, action) => {
-      restaurantAdapter.setAll(state, action.payload);
-    });
+    builder
+      .addCase(getRestaurantList.fulfilled, (state, action) => {
+        restaurantAdapter.setAll(state, action.payload);
+      })
+      .addCase(getRestaurantById.fulfilled, (state, action) => {
+        restaurantAdapter.setOne(state, action.payload);
+      });
   }
 });
 
@@ -25,7 +28,7 @@ export const restaurantSliceReducer = restaurantSlice.reducer;
 const { selectRestaurantsState } = restaurantSlice.selectors;
 
 export const {
-  selectIds: selectRestaurantsIds,
+  selectIds: selectRestaurantIds,
   selectById: selectRestaurantById,
   selectTotal: selectRestaurantsTotal
 } = restaurantAdapter.getSelectors(selectRestaurantsState);

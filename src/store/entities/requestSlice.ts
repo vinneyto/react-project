@@ -21,7 +21,7 @@ const requestsSlice = createSlice({
     selectIsLoading: (state: RequestsState, id: string) =>
       state[id] === 'pending',
     selectRequestStatus: (state: RequestsState, id: string) =>
-      state[id] ?? 'pending'
+      state[id] ?? 'idle'
   },
   extraReducers: (builder) => {
     builder
