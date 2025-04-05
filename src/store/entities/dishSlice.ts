@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 import { Dish } from '../../types';
-import { getDishesByRestaurantId } from '../requests';
+import { getDishById, getDishesByRestaurantId } from '../requests';
 
 export const dishAdapter = createEntityAdapter<Dish>();
 
@@ -13,9 +13,13 @@ const dishSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getDishesByRestaurantId.fulfilled, (state, action) => {
-      dishAdapter.setAll(state, action.payload);
-    });
+    builder
+      .addCase(getDishesByRestaurantId.fulfilled, (state, action) => {
+        dishAdapter.setAll(state, action.payload);
+      })
+      .addCase(getDishById.fulfilled, (state, action) => {
+        dishAdapter.setOne(state, action.payload);
+      });
   }
 });
 

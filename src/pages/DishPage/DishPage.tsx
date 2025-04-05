@@ -1,15 +1,23 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Placeholder } from '../../components';
+import { RequestGuard } from '../../components';
 import { DishCardFeature } from '../../features';
+import { useRequest } from '../../hooks';
+import { getDishById } from '../../store';
 
 export const DishPage: React.FC = () => {
-  const { dishId } = useParams<{ dishId: string }>();
+  const { dishId } = useParams();
 
-  if (!dishId) {
-    return <Placeholder>Dish not found</Placeholder>;
-  }
+  const status = useRequest(getDishById, dishId ?? '');
 
-  return <DishCardFeature dishId={dishId} />;
+  return (
+    <RequestGuard
+      status={status}
+      pendingText="Loading..."
+      errorText="Error loading dish"
+    >
+      <DishCardFeature dishId={dishId ?? ''} />
+    </RequestGuard>
+  );
 };
