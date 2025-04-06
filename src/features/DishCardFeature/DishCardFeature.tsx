@@ -14,11 +14,6 @@ export const DishCardFeature: React.FC<DishCardFeatureProps> = ({ dishId }) => {
 
   const dish = useAppSelector((state) => selectDishById(state, dishId));
 
-  if (!dish) {
-    // стоит ли в таких случаях прям тут показывать что блюдо не найдено?
-    return null;
-  }
-
   return (
     <DishCard
       dish={dish}

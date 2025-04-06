@@ -9,7 +9,7 @@ import { getDishById } from '../../store';
 export const DishPage: React.FC = () => {
   const { dishId } = useParams();
 
-  const status = useRequest(getDishById, dishId ?? '');
+  const status = useRequest(getDishById, dishId!);
 
   return (
     <RequestGuard
@@ -17,7 +17,7 @@ export const DishPage: React.FC = () => {
       pendingText="Loading..."
       errorText="Error loading dish"
     >
-      <DishCardFeature dishId={dishId ?? ''} />
+      <DishCardFeature dishId={dishId!} />
     </RequestGuard>
   );
 };

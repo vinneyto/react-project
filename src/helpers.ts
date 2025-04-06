@@ -1,3 +1,5 @@
+import { RequestStatus } from './store';
+
 export const getRatingClass = (rating: number, high: string, low: string) => {
   if (rating >= 4) {
     return high;
@@ -28,4 +30,14 @@ export async function loadEntityList<T>(url: string): Promise<T[]> {
     throw new Error('Invalid data format: expected an array');
   }
   return data as T[];
+}
+
+export function mergeStatuses(...statuses: RequestStatus[]) {
+  if (statuses.includes('rejected')) {
+    return 'rejected';
+  }
+  if (statuses.includes('pending')) {
+    return 'pending';
+  }
+  return 'fulfilled';
 }

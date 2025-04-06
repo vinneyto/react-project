@@ -9,7 +9,7 @@ import { getRestaurantById } from '../../store';
 export const RestaurantDetailPage: React.FC = () => {
   const { restaurantId } = useParams();
 
-  const status = useRequest(getRestaurantById, restaurantId ?? '');
+  const status = useRequest(getRestaurantById, restaurantId!);
 
   return (
     <RequestGuard
@@ -17,10 +17,7 @@ export const RestaurantDetailPage: React.FC = () => {
       pendingText="Loading..."
       errorText="Error loading restaurant"
     >
-      <RestaurantCardFeature
-        key={restaurantId}
-        restaurantId={restaurantId ?? ''}
-      >
+      <RestaurantCardFeature key={restaurantId} restaurantId={restaurantId!}>
         <TabPanel>
           <Tab to="menu">Menu</Tab>
           <Tab to="reviews">Reviews</Tab>
