@@ -12,10 +12,6 @@ interface DishLinkFeatureProps {
 export const DishLinkFeature: React.FC<DishLinkFeatureProps> = ({ dishId }) => {
   const dish = useAppSelector((state) => selectDishById(state, dishId));
 
-  if (!dish) {
-    return null;
-  }
-
   return (
     <Link to={`/dish/${dishId}`} className={styles.link}>
       {dish.name}

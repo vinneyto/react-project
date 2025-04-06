@@ -1,7 +1,7 @@
 import { GetThunkAPI } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
 
-import { selectRequestStatus } from '../store';
+import { RequestStatus, selectRequestStatus } from '../store';
 import { useAppDispatch } from './useAppDispatch';
 import { useAppSelector } from './useAppSelector';
 
@@ -9,25 +9,26 @@ import { useAppSelector } from './useAppSelector';
 export const useRequest = <T extends (...args: any[]) => any>(
   thunk: T,
   ...args: Parameters<T>
-) => {
+): RequestStatus => {
   const dispatch = useAppDispatch();
 
-  const [request, setRequest] = useState<GetThunkAPI<unknown> | null>(null);
+  const [requestId, setRequestId] = useState<string | null>(null);
 
   const requestStatus = useAppSelector((state) =>
-    selectRequestStatus(state, request?.requestId ?? '')
+    selectRequestStatus(state, requestId ?? '')
   );
 
   useEffect(() => {
     const request = dispatch(thunk(...args)) as GetThunkAPI<unknown>;
-    setRequest(request);
+    setRequestId(request.requestId);
 
     return () => {
       request.abort();
-      setRequest(null);
+      setRequestId(null);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, thunk, ...args]);
 
-  return requestStatus;
+  // статус pending пока не сделали запрос
+  return requestId ? requestStatus : 'pending';
 };

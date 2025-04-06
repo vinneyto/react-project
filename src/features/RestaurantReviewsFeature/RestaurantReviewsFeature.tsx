@@ -17,10 +17,6 @@ export const RestaurantReviewsFeature: React.FC<
     selectRestaurantById(state, restaurantId)
   );
 
-  if (!restaurant) {
-    return null;
-  }
-
   const { reviews } = restaurant;
 
   return (

@@ -10,7 +10,7 @@ import styles from './RestaurantListPage.module.css';
 export const RestaurantListPage: React.FC = () => {
   const status = useRequest(getRestaurants);
 
-  const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
+  const restaurantIds = useAppSelector(selectRestaurantIds);
 
   return (
     <RequestGuard
