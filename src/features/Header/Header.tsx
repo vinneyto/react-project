@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../hooks';
 import { CartCountFeature } from '../CartCountFeature';
@@ -12,7 +13,14 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.content}>
-        <h1>Restaurant Aggregator</h1>
+        <Link to="/" className={styles.logo}>
+          LaComida
+        </Link>
+        <nav className={styles.nav}>
+          <Link to="/restaurants" className={styles.navLink}>
+            Restaurants
+          </Link>
+        </nav>
         <div className={styles.buttonContainer}>
           <UserAuth />
           {isAuthenticated && <CartCountFeature />}

@@ -1,5 +1,15 @@
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+
+import { Placeholder } from './components';
 import { Layout } from './features';
-import { RestaurantPage } from './pages';
+import {
+  DishPage,
+  HomePage,
+  RestaurantDetailPage,
+  RestaurantListPage,
+  RestaurantMenuPage,
+  RestaurantReviewsPage
+} from './pages';
 import { AuthProvider, ThemeProvider } from './providers';
 import './theme.css';
 
@@ -7,9 +17,25 @@ export function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Layout>
-          <RestaurantPage />
-        </Layout>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/restaurants" element={<RestaurantListPage />}>
+                <Route
+                  index
+                  element={<Placeholder>Please select restaurant</Placeholder>}
+                />
+                <Route path=":restaurantId" element={<RestaurantDetailPage />}>
+                  <Route index element={<Navigate to="menu" replace />} />
+                  <Route path="menu" element={<RestaurantMenuPage />} />
+                  <Route path="reviews" element={<RestaurantReviewsPage />} />
+                </Route>
+              </Route>
+              <Route path="dish/:dishId" element={<DishPage />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
   );
