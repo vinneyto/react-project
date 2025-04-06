@@ -8,7 +8,7 @@ import { selectRestaurantIds } from '../../store/slices/restaurantSlice';
 import styles from './RestaurantListPage.module.css';
 
 export const RestaurantListPage: React.FC = () => {
-  const restaurantIds = useAppSelector((state) => selectRestaurantIds(state));
+  const restaurantIds = useAppSelector(selectRestaurantIds);
 
   return (
     <div className={styles.container}>
