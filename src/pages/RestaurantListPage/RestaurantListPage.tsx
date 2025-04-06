@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { TabPanel } from '../../components';
 import { RestaurantTabFeature } from '../../features';
 import { useAppSelector } from '../../hooks';
-import { selectRestaurantIds } from '../../store/slices/restaurantSlice';
+import { selectRestaurantIds } from '../../store';
 import styles from './RestaurantListPage.module.css';
 
 export const RestaurantListPage: React.FC = () => {
