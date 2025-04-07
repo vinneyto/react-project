@@ -12,3 +12,4 @@ export * from './RestaurantReviews';
 export * from './ReviewCard';
 export * from './RestaurantCard';
 export * from './Placeholder';
+export * from './RequestGuard';

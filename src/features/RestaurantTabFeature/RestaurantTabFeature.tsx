@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Tab } from '../../components';
 import { useAppSelector } from '../../hooks';
-import { selectRestaurantById } from '../../store/slices/restaurantSlice';
+import { selectRestaurantById } from '../../store';
 
 export interface RestaurantTabFeatureProps {
   restaurantId: string;

@@ -1,25 +1,33 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { TabPanel } from '../../components';
+import { RequestGuard, TabPanel } from '../../components';
 import { RestaurantTabFeature } from '../../features';
-import { useAppSelector } from '../../hooks';
-import { selectRestaurantIds } from '../../store';
+import { useAppSelector, useRequest } from '../../hooks';
+import { getRestaurants, selectRestaurantIds } from '../../store';
 import styles from './RestaurantListPage.module.css';
 
 export const RestaurantListPage: React.FC = () => {
+  const status = useRequest(getRestaurants);
+
   const restaurantIds = useAppSelector(selectRestaurantIds);
 
   return (
-    <div className={styles.container}>
-      <TabPanel>
-        {restaurantIds.map((id) => (
-          <RestaurantTabFeature key={id} restaurantId={id} />
-        ))}
-      </TabPanel>
-      <div className={styles.tabContent}>
-        <Outlet />
+    <RequestGuard
+      status={status}
+      pendingText="Loading..."
+      errorText="Error loading restaurants"
+    >
+      <div className={styles.container}>
+        <TabPanel>
+          {restaurantIds.map((id) => (
+            <RestaurantTabFeature key={id} restaurantId={id} />
+          ))}
+        </TabPanel>
+        <div className={styles.tabContent}>
+          <Outlet />
+        </div>
       </div>
-    </div>
+    </RequestGuard>
   );
 };

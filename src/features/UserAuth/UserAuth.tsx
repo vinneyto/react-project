@@ -2,8 +2,13 @@ import React, { useCallback } from 'react';
 
 import { Button } from '../../components';
 import { useAuth } from '../../hooks';
-import { mockUser } from '../../normalized-mock';
+import { User } from '../../types';
 import styles from './UserAuth.module.css';
+
+const mockUser: User = {
+  id: '1',
+  name: 'Carlos García-López'
+};
 
 export const UserAuth: React.FC = () => {
   const { user, login, logout } = useAuth();
