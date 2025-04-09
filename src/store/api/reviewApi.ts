@@ -10,7 +10,7 @@ export const reviewApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
   tagTypes: [REVIEW],
   endpoints: (builder) => ({
-    getReviews: builder.query<Review[], string>({
+    getReviewsByRestaurantId: builder.query<Review[], string>({
       query: (id) => `reviews?restaurantId=${id}`,
       providesTags: (result) =>
         result
@@ -45,7 +45,7 @@ export const reviewApi = createApi({
 });
 
 export const {
-  useGetReviewsQuery,
+  useGetReviewsByRestaurantIdQuery,
   useCreateReviewMutation,
   useUpdateReviewMutation
 } = reviewApi;

@@ -3,22 +3,24 @@ import { useParams } from 'react-router-dom';
 
 import { RequestGuard } from '../../components';
 import { RestaurantReviewsFeature } from '../../features';
-import { mergeStatuses } from '../../helpers';
-import { useRequest } from '../../hooks';
-import { getReviewsByRestaurantId, getUsers } from '../../store';
+import {
+  useGetReviewsByRestaurantIdQuery,
+  useGetUsersQuery
+} from '../../store';
 
 export const RestaurantReviewsPage: React.FC = () => {
   const { restaurantId } = useParams();
 
-  const usersLoadingStatus = useRequest(getUsers);
-  const reviewsLoadingStatus = useRequest(
-    getReviewsByRestaurantId,
-    restaurantId!
-  );
+  const { isLoading: isReviewsLoading, isError: isReviewsError } =
+    useGetReviewsByRestaurantIdQuery(restaurantId!);
+
+  const { isLoading: isUsersLoading, isError: isUsersError } =
+    useGetUsersQuery();
 
   return (
     <RequestGuard
-      status={mergeStatuses(usersLoadingStatus, reviewsLoadingStatus)}
+      isLoading={isReviewsLoading || isUsersLoading}
+      isError={isReviewsError || isUsersError}
       pendingText="Loading..."
       errorText="Error loading reviews"
     >

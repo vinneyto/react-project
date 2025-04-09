@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { ReviewCard } from '../../components';
-import { useAppSelector } from '../../hooks';
-import { selectReviewById, selectUserById } from '../../store';
+import { useGetUsersQuery } from '../../store';
+import { Review, User } from '../../types';
 
 interface ReviewCardFeatureProps {
-  reviewId: string;
+  review: Review;
 }
 
 export const ReviewCardFeature: React.FC<ReviewCardFeatureProps> = ({
-  reviewId
+  review
 }) => {
-  const review = useAppSelector((state) => selectReviewById(state, reviewId));
+  const { data: users } = useGetUsersQuery();
 
-  const user = useAppSelector((state) => selectUserById(state, review.userId));
+  const user = useMemo(() => {
+    return users?.find((user: User) => user.id === review.userId);
+  }, [users, review.userId]);
 
   return (
-    <ReviewCard text={review.text} rating={review.rating} user={user.name} />
+    <ReviewCard text={review.text} rating={review.rating} user={user!.name} />
   );
 };

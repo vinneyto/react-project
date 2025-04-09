@@ -3,17 +3,18 @@ import { Outlet, useParams } from 'react-router-dom';
 
 import { RequestGuard, Tab, TabPanel } from '../../components';
 import { RestaurantCardFeature } from '../../features';
-import { useRequest } from '../../hooks';
-import { getRestaurantById } from '../../store';
+import { useGetRestaurantsQuery } from '../../store';
 
 export const RestaurantDetailPage: React.FC = () => {
   const { restaurantId } = useParams();
 
-  const status = useRequest(getRestaurantById, restaurantId!);
+  // это дичь - но мы знаем что до этого момента будет вызван список с ресторанами
+  const { isLoading, isError } = useGetRestaurantsQuery();
 
   return (
     <RequestGuard
-      status={status}
+      isLoading={isLoading}
+      isError={isError}
       pendingText="Loading..."
       errorText="Error loading restaurant"
     >

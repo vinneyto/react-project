@@ -1,8 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 
 import { RestaurantCard } from '../../components';
-import { useAppSelector } from '../../hooks';
-import { selectRestaurantById } from '../../store';
+import { useGetRestaurantsQuery } from '../../store';
 
 interface RestaurantCardFeatureProps extends PropsWithChildren {
   restaurantId: string;
@@ -12,9 +11,11 @@ export const RestaurantCardFeature: React.FC<RestaurantCardFeatureProps> = ({
   restaurantId,
   children
 }) => {
-  const restaurant = useAppSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
+  const { data: restaurant } = useGetRestaurantsQuery(undefined, {
+    selectFromResult: ({ data }) => ({
+      data: data?.find((restaurant) => restaurant.id === restaurantId)
+    })
+  });
 
-  return <RestaurantCard name={restaurant.name}>{children}</RestaurantCard>;
+  return <RestaurantCard name={restaurant!.name}>{children}</RestaurantCard>;
 };
