@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Card } from '../../components';
-import { MenuItem } from '../../types';
+import { Dish } from '../../types';
 import styles from './DishCard.module.css';
 
 interface DishCardProps {
-  dish: MenuItem;
+  dish: Dish;
   counter: React.ReactElement | null;
 }
 

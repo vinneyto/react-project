@@ -4,23 +4,27 @@ import { RequestStatus } from '../../store';
 import { Placeholder } from '../Placeholder';
 
 interface RequestGuardProps {
-  status: RequestStatus;
+  status?: RequestStatus;
   pendingText: string;
   errorText: string;
   children: React.ReactNode;
+  isLoading?: boolean;
+  isError?: boolean;
 }
 
 export const RequestGuard: React.FC<RequestGuardProps> = ({
   status,
   pendingText,
   errorText,
-  children
+  children,
+  isLoading,
+  isError
 }) => {
-  if (status === 'pending') {
+  if (status === 'pending' || isLoading) {
     return <Placeholder>{pendingText}</Placeholder>;
   }
 
-  if (status === 'rejected') {
+  if (status === 'rejected' || isError) {
     return <Placeholder>{errorText}</Placeholder>;
   }
 

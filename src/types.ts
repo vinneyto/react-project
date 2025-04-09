@@ -1,10 +1,3 @@
-export interface MenuItem {
-  id: string;
-  price: number;
-  name: string;
-  ingredients: string[];
-}
-
 export interface Restaurant {
   id: string;
   name: string;

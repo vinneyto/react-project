@@ -3,17 +3,17 @@ import { useParams } from 'react-router-dom';
 
 import { RequestGuard } from '../../components';
 import { DishCardFeature } from '../../features';
-import { useRequest } from '../../hooks';
-import { getDishById } from '../../store';
+import { useGetDishByIdQuery } from '../../store';
 
 export const DishPage: React.FC = () => {
   const { dishId } = useParams();
 
-  const status = useRequest(getDishById, dishId!);
+  const { isLoading, isError } = useGetDishByIdQuery(dishId!);
 
   return (
     <RequestGuard
-      status={status}
+      isLoading={isLoading}
+      isError={isError}
       pendingText="Loading..."
       errorText="Error loading dish"
     >

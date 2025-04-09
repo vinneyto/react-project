@@ -3,17 +3,19 @@ import { useParams } from 'react-router-dom';
 
 import { RequestGuard } from '../../components';
 import { RestaurantMenuFeature } from '../../features';
-import { useRequest } from '../../hooks';
-import { getDishesByRestaurantId } from '../../store';
+import { useGetDishesByRestaurantIdQuery } from '../../store';
 
 export const RestaurantMenuPage: React.FC = () => {
   const { restaurantId } = useParams();
 
-  const status = useRequest(getDishesByRestaurantId, restaurantId ?? '');
+  const { isLoading, isError } = useGetDishesByRestaurantIdQuery(
+    restaurantId ?? ''
+  );
 
   return (
     <RequestGuard
-      status={status}
+      isLoading={isLoading}
+      isError={isError}
       pendingText="Loading..."
       errorText="Error loading menu"
     >

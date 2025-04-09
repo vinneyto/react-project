@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { RestaurantMenu } from '../../components';
-import { useAppSelector } from '../../hooks';
-import { selectRestaurantById } from '../../store';
+import { useGetDishesByRestaurantIdQuery } from '../../store';
 import { DishLinkFeature } from '../DishLinkFeature';
 
 interface RestaurantMenuFeatureProps {
@@ -12,15 +11,13 @@ interface RestaurantMenuFeatureProps {
 export const RestaurantMenuFeature: React.FC<RestaurantMenuFeatureProps> = ({
   restaurantId
 }) => {
-  const { menu } = useAppSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
+  const { data: menu } = useGetDishesByRestaurantIdQuery(restaurantId ?? '');
 
   return (
     <RestaurantMenu>
-      {menu.map((id) => (
-        <li key={id}>
-          <DishLinkFeature dishId={id} />
+      {menu!.map((dish) => (
+        <li key={dish.id}>
+          <DishLinkFeature dish={dish} />
         </li>
       ))}
     </RestaurantMenu>

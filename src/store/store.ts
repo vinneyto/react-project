@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import { dishApi } from './api';
 import {
   cartSliceReducer,
-  dishSliceReducer,
   requestsSliceReducer,
   restaurantSliceReducer,
   reviewSliceReducer,
@@ -12,12 +12,14 @@ import {
 export const store = configureStore({
   reducer: {
     restaurants: restaurantSliceReducer,
-    dishes: dishSliceReducer,
     reviews: reviewSliceReducer,
     users: userSliceReducer,
     cart: cartSliceReducer,
-    request: requestsSliceReducer
-  }
+    request: requestsSliceReducer,
+    dishApi: dishApi.reducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(dishApi.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;
